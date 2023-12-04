@@ -1,0 +1,7 @@
+.demo-logo-vertical {
+    height: 200px;
+    width: 200px;
+    border: solid;
+    background-image: url('../assets/Chill\ Home\ logo\ 500px.png');
+    background-size: cover;
+}
