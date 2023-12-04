@@ -1,112 +1,43 @@
 ////////// layout : sider (nav) à gauche en colonne, à droite, une header,un content et un footer /////// 
 import React from 'react';
+import PersistentDrawerRight from './drawer';
+import PersistentDrawerLeft from './drawer';
 
-import {
-  AppstoreOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  ShopOutlined,
-  TeamOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons';
-import { Button, Input, Layout, Menu, theme } from 'antd';
+/* <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap"
+/> */
 
-const { Header, Content, Footer, Sider } = Layout;
-const { Search } = Input;
 
-const items = [
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  AppstoreOutlined,
-  TeamOutlined,
-  ShopOutlined,
-].map((icon, index) => ({
-  key: String(index + 1),
-  icon: React.createElement(icon),
-  label: `nav ${index + 1}`,
-}));
 const Page1 = () => {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
-  return (
-    <Layout hasSider>
-
-{/* <Search placeholder="input search loading default" loading={false} /> */}
-    
-
-      <Sider
-        style={{
-          overflow: 'auto',
-          height: '100vh',
-          position: 'fixed',
-          left: 0,
-          top: 0,
-          bottom: 0,
-        }}
-      >
-        <div className="demo-logo-vertical" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
-      </Sider>
-      <Layout
-        className="site-layout"
-        style={{
-          marginLeft: 200,
-        }}
-      >
-        <Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-          }}
-        >Header</Header>
-        <Content
-          style={{
-            margin: '24px 16px 0',
-            overflow: 'initial',
-          }}
-        >
-          <div
-            style={{
-              padding: 24,
-              textAlign: 'center',
-              background: colorBgContainer,
-            }}
-          >
-            <p>long content</p>
-            <p>
-            <Button type="primary">Primary Button</Button>
-            </p>
-            {
-              // indicates very long content
-              Array.from(
-                {
-                  length: 100,
-                },
-                (_, index) => (
-                  <React.Fragment key={index}>
-                    {index % 20 === 0 && index ? 'more' : '...'}
-                    <br />
-                  </React.Fragment>
-                ),
-              )
-            }
-          </div>
-        </Content>
-        <Footer
-          style={{
-            textAlign: 'center',
-          }}
-        >
-         FOOTER
-        </Footer>
-      </Layout>
-    </Layout>
-  );
+  return <div>
+   <PersistentDrawerLeft />
+    </div>
 };
 export default Page1;
+
+
+palette couleurs à partir du logo:
+/* CSS HEX */
+--lilac: #C295B0ff;
+--tyrian-purple: #550033ff;
+--licorice: #0B0007ff;
+--mulberry: #BE4A90ff;
+--murrey: #7E004Cff;
+
+
+/* SCSS HEX */
+$lilac: #C295B0ff;
+$tyrian-purple: #550033ff;
+$licorice: #0B0007ff;
+$mulberry: #BE4A90ff;
+$murrey: #7E004Cff;
+
+/* SCSS RGB */
+$lilac: rgba(194, 149, 176, 1);
+$tyrian-purple: rgba(85, 0, 51, 1);
+$licorice: rgba(11, 0, 7, 1);
+$mulberry: rgba(190, 74, 144, 1);
+$murrey: rgba(126, 0, 76, 1);

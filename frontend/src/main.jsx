@@ -1,23 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Root from './routes/root.jsx'
+
 import Home from './pages/accueil.jsx'
 import Page1 from './pages/page1.jsx'
 import Gallerie from './pages/gallerie.jsx'
-import './index.css'
 
+import './index.css'
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 import {
   createBrowserRouter, RouterProvider
 } from "react-router-dom"
-import { ConfigProvider } from 'antd'
 
-const theme = {
-  token: {
-    colorPrimary: '#724c89',
-    borderRadius: 2,
-    colorBgContainer: '#f6ffed',
-  },
-}
 
 const router = createBrowserRouter([
   {
@@ -43,8 +40,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-     <ConfigProvider theme={theme}>
-      <RouterProvider router={router} />
-     </ConfigProvider>
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )
