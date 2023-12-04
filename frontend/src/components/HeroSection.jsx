@@ -6,29 +6,42 @@ const HeroSection = () => {
   return (
 
 
-    <div
-    className="hero min-h-screen"
-    style={{
-        backgroundImage: `url(${background})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-    }}
-  >
-{/*image de fond*/}
+   <div
+  className="hero min-h-screen flex flex-col items-center justify-center space-y-4"
+  style={{
+    backgroundImage: `url(${background})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  }}
+>
+  {/* Contenu principal */}
+  <img src={logo} className="w-25 h-25" />
 
-{/*contenu principal*/}
-<div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center'>
+  <div className="text-center text-white">
+    <h1 className="font-dhurjati text-2xl lg:text-3xl xl:text-4xl mx-auto mt-8 shadow-neon">
+      Films et séries en illimité, et bien plus<br />
+      Où que vous soyez.
+    </h1>
+    <p className="font-dhurjati mx-auto mt-4 shadow-neon">Annulez à tout moment.</p>
 
-    <img src={logo} className='mb-4 mx-auto'/>
+    {/* Boutons avec espace en haut et en bas */}
+    <div className="py-4 items-center justify-center space-y-4">
+      <button className="px-7 py-2 mx-auto text-3xl rounded-xl bg-indigo-500 text-white shadow-lg shadow-indigo-500/50 transition ease-in-out duration-300 transform hover:-translate-y-1 hover:scale-110 hover:bg-red-500">
+        S'INSCRIRE
+      </button>
 
-
-{/*buttons*/}
-<button className= 'bg-blue-500 text-white px-4 py-2 mr-4'>S'INSCRIRE</button>
-<button className= 'bg-gray-500 text-gray-700 px-4 py-2'>SE CONNECTER</button>
-</div>
-
-
+      <button className="px-7 py-2 mx-auto text-3xl rounded-xl bg-cyan-500 text-white shadow-lg shadow-cyan-500/50 transition ease-in-out duration-300 transform hover:-translate-y-1 hover:scale-110 hover:bg-red-500">
+        CONNECTION
+      </button>
     </div>
+  </div>
+</div>
+ 
+   
+
+
+
+    
   )
 }
 
