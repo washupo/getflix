@@ -19,25 +19,26 @@ const Page1 = () => {
 export default Page1;
 
 
-palette couleurs à partir du logo:
-/* CSS HEX */
---lilac: #C295B0ff;
---tyrian-purple: #550033ff;
---licorice: #0B0007ff;
---mulberry: #BE4A90ff;
---murrey: #7E004Cff;
+// {/*//palette couleurs à partir du logo:
+// /* CSS HEX */
+// --lilac: #C295B0ff;
+// --tyrian-purple: #550033ff;
+// --licorice: #0B0007ff;
+// --mulberry: #BE4A90ff;
+// --murrey: #7E004Cff;
 
 
-/* SCSS HEX */
-$lilac: #C295B0ff;
-$tyrian-purple: #550033ff;
-$licorice: #0B0007ff;
-$mulberry: #BE4A90ff;
-$murrey: #7E004Cff;
+// /* SCSS HEX */
+// $lilac: #C295B0ff;
+// $tyrian-purple: #550033ff;
+// $licorice: #0B0007ff;
+// $mulberry: #BE4A90ff;
+// $murrey: #7E004Cff;
 
-/* SCSS RGB */
-$lilac: rgba(194, 149, 176, 1);
-$tyrian-purple: rgba(85, 0, 51, 1);
-$licorice: rgba(11, 0, 7, 1);
-$mulberry: rgba(190, 74, 144, 1);
-$murrey: rgba(126, 0, 76, 1);
+// /* SCSS RGB */
+// $lilac: rgba(194, 149, 176, 1);
+// $tyrian-purple: rgba(85, 0, 51, 1);
+// $licorice: rgba(11, 0, 7, 1);
+// $mulberry: rgba(190, 74, 144, 1);
+// $murrey: rgba(126, 0, 76, 1);*/} 
+
