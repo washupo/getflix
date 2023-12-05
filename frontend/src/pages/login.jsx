@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 function Copyright(props) {
@@ -36,7 +37,7 @@ export default function SignInSide() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -52,6 +53,7 @@ export default function SignInSide() {
                 console.log(data.token);
 
                 // Handle successful login, e.g., save the token to local storage
+                navigate('/page1');
             } else {
                 console.error('Échec de la connexion ', response.status);
             }
