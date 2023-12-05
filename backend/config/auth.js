@@ -1,5 +1,8 @@
 //Configuration de l'authentification)
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
+
+const jwtSecret = process.env.SECRET_KEY || 'defaultSecret'; // Use the JWT secret from the environment variable
 
 function generateToken(user) {
     const payload = {
@@ -15,7 +18,7 @@ function generateToken(user) {
     // }
 
     // Signer le jeton avec une clé secrète (à ne pas partager publiquement)
-    return jwt.sign(payload, 'votreSecretJWT', { expiresIn: '1h' });
+    return jwt.sign(payload, jwtSecret, { expiresIn: '1h' });
 }
 
 module.exports = generateToken;

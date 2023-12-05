@@ -12,6 +12,7 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
 
 
 function Copyright(props) {
@@ -34,34 +35,32 @@ const defaultTheme = createTheme();
 export default function SignInSide() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-   
+
 
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-    
+
         try {
-            const response = await fetch('http://localhost:8000/api/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, password }),
+            const response = await axios.post('http://localhost:8000/api/auth/login', {
+                username,
+                password,
             });
-    
-            if (response.ok) {
-                const data = await response.json();
+
+            if (response.status === 200) {
+                const data = response.data;
                 console.log(data.token);
-    
-                
+
+                // Handle successful login, e.g., save the token to local storage
             } else {
                 console.error('Échec de la connexion ', response.status);
             }
         } catch (error) {
             console.error('Erreur réseau ', error);
+            console.log('Error Response:', error.response); // Ajoutez cette ligne pour obtenir plus de détails sur la réponse d'erreur
         }
     };
-    
+
 
     //     = (event) => {
     //     event.preventDefault();
