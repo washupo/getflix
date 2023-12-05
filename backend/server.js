@@ -1,14 +1,12 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
-//const validationMiddleware = require('./middlewares/validationMiddleware'); 
-require('dotenv').config();
-//const Note = require('./models/testSchemas');
-//const { User, Content } = require('./models/testSchemas');
-
 const app = express();
 app.use(cors());
+
 // Middleware pour parser les données JSON dans les requêtes
 app.use(express.json());
 
