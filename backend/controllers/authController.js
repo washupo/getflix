@@ -30,11 +30,11 @@ async function inscription(req, res) {
     await nouvelUtilisateur.save();
 
     // Générer un jeton JWT et le renvoyer
-    const token = jwt.sign({ userId: nouvelUtilisateur._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: nouvelUtilisateur._id }, process.env.SECRET_KEY, { expiresIn: '1h' });
     res.json({ token });
   } catch (err) {
     console.error('Erreur lors de l\'inscription :', err);
-    res.status(500).send('Erreur serveur');
+    res.status(500).send('Erreur serveur' + err.message);
   }
 }
 
@@ -58,7 +58,7 @@ async function connexion(req, res) {
     }
 
     // Générer un jeton JWT et le renvoyer
-    const token = jwt.sign({ userId: utilisateur._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: utilisateur._id }, process.env.SECRET_KEY, { expiresIn: '1h' });
     res.json({ token });
   } catch (err) {
     console.error('Erreur lors de la connexion :', err);
