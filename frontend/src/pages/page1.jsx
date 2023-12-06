@@ -12,17 +12,12 @@ const Mynav = () => {
   );
 };
 
-const Page1 = () => {
-  return (<>
-      <Navbar />
-      <div>
-
-      <Mynav />
-
-
-      </div>
-    </>
-  )}
+const Page1 = () => (
+  <div> 
+      <Navbar/>
+      <Mynav/>
+  </div>
+          );
 
 export default Page1
 

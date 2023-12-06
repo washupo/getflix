@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
+import { ThemeProvider, styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -20,8 +20,23 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
 
+const Body = () => {
+  const bodyStyle = {
+    backgroundColor: 'black',
+    color: 'white',
+    minHeight: '100vh', // Si vous souhaitez que le fond noir prenne au moins 100% de la hauteur de la vue
+    padding: '20px', // Ajoutez un espace de remplissage si nécessaire
+  };
 
+  return (
+    <div style={bodyStyle}>
+      <h1>Bienvenue sur la page avec fond noir</h1>
+      <p>Ce texte est sur fond noir.</p>
+    </div>
+  );
+};
 
+// export default Body;
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -96,7 +111,8 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Chill home
+          <img height="100%" width="100px" src="../assets/chill.png" alt="Logo" />
+            {/* Chill home */}
           </Typography>
         </Toolbar>
       </AppBar>

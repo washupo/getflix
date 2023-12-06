@@ -1,6 +1,6 @@
 import React from 'react'
-import background from '../assets/banner.webp'
-import logo from '../assets/logo.webp'
+import background from '../../assets/banner.webp'
+import logo from '../../assets/logo.webp'
 
 const HeroSection = () => {
   return (
