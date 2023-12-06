@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Root from './routes/root.jsx'
+import Cookies from './components/Cookies.jsx'; 
+
 
 import Home from './pages/accueil.jsx'
 import Page1 from './pages/page1.jsx'
@@ -19,7 +21,12 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: (
+      <>
+        <Cookies />
+        <Root />
+      </>
+    ),
     errorElement: <div>404</div>,
     children: [
       {

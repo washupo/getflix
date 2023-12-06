@@ -25,7 +25,8 @@ const Cookies = () => {
       }
 
     return (
-        <div className='fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center'>
+        <>
+            <div className='fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center'>
             <section className="fixed max-w-md p-4 mx-auto bg-white border border-gray-200 dark:bg-gray-800 transform -translate-x-1/2 md:translate-x-0 left-1/2 md:left-12  bottom-16  dark:border-gray-700 rounded-2xl">
                 <h2 className="font-semibold text-gray-800 dark:text-white">🍪 We use cookies!</h2>
 
@@ -45,8 +46,10 @@ const Cookies = () => {
                 </div>
             </section>
         </div>
+        </>
+        
 
     )
 }
 
-export default Cookies
+export default Cookies;
