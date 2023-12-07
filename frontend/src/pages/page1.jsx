@@ -1,44 +1,100 @@
-////////// layout : sider (nav) à gauche en colonne, à droite, une header,un content et un footer /////// 
-import React from 'react';
-import PersistentDrawerRight from './drawer';
-import PersistentDrawerLeft from './drawer';
+import React from 'react'
+import Button from '@mui/material/Button';
+import ResponsiveAppBar from '../components/appbar';
+import { Grid, Paper, Box, Avatar, Card, CardContent, CardHeader, CardMedia, IconButton, Typography } from '@mui/material';
+import { red } from '@mui/material/colors';
 
-/* <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap"
-/> */
-
-
-const Page1 = () => {
-  return <div>
-   <PersistentDrawerLeft />
+//// theme provider pour le theme couleur //////////
+const Mynav = () => {
+  return (
+    <div>
+      {/* <Button color="primary">Bouton principal</Button>
+      <Button color="secondary">Bouton secondaire</Button> */}
+      {/* <ColorTabs /> Intégration du composant ColorTabs */}
     </div>
+  );
 };
-export default Page1;
 
+const affiches = [
+  {
+    titre: 'Film 1',
+    image: 'https://placekitten.com/345/194'
+  },
+  {
+    titre: 'Film 2',
+    image: 'https://placekitten.com/345/194'
+  },
+  {
+    titre: 'Film 3',
+    image: 'https://placekitten.com/345/194'
+  }
+]
 
-// {/*//palette couleurs à partir du logo:
-// /* CSS HEX */
-// --lilac: #C295B0ff;
-// --tyrian-purple: #550033ff;
-// --licorice: #0B0007ff;
-// --mulberry: #BE4A90ff;
-// --murrey: #7E004Cff;
+const Page1 = () => (
+  <div> 
+    <ResponsiveAppBar />
+    <Mynav />
+    
+    <Grid sx={{ flexGrow: 1 }} container spacing={2}>
+      <Grid item xs={12}>
+        <Grid container justifyContent="center" spacing={2}>
+          {affiches.map((film) => (
+            <Grid key={film} item>
+           
+              <Card sx={{ maxWidth: 345 }}>
+      <CardHeader
+        avatar={
+          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+            R
+          </Avatar>
+        }
+        action={
+          <IconButton aria-label="settings">
+          </IconButton>
+        }
+        title={film.titre}
+        subheader="2016"
+      />
+      <CardMedia
+        component="img"
+        height="194"
+        image={film.image}
+        alt="chatton"
+      />
+      <CardContent>
+        <Typography variant="body2" color="text.secondary">
+         
+        </Typography>
+      </CardContent>
+     
+      
+    </Card>
+            </Grid>
+          ))}
+        </Grid>
+        <Box sx={{ m: 0.5 }} />
+        <Grid container justifyContent="center" spacing={2}>
+          {[0, 1, 2, 4, 5].map((value) => (
+            <Grid key={value} item>
+              <Paper
+                sx={{
+                  height: 140,
+                  width: 100,
+                  backgroundColor: (theme) =>
+                    theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+                }}
+              />
+             
+            </Grid>
+          ))}
+           <div>
+              <Button color="primary">More films</Button>
+              </div>
+        </Grid>
+      </Grid>
+    </Grid>
+  </div>
+          );
 
-
-// /* SCSS HEX */
-// $lilac: #C295B0ff;
-// $tyrian-purple: #550033ff;
-// $licorice: #0B0007ff;
-// $mulberry: #BE4A90ff;
-// $murrey: #7E004Cff;
-
-// /* SCSS RGB */
-// $lilac: rgba(194, 149, 176, 1);
-// $tyrian-purple: rgba(85, 0, 51, 1);
-// $licorice: rgba(11, 0, 7, 1);
-// $mulberry: rgba(190, 74, 144, 1);
-// $murrey: rgba(126, 0, 76, 1);*/} 
+export default Page1
 

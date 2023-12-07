@@ -5,3 +5,7 @@
     background-image: url('../assets/Chill\ Home\ logo\ 500px.png');
     background-size: cover;
 }
+
+body {
+    background-color: pink;
+}
