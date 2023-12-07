@@ -5,7 +5,7 @@ import Root from './routes/root.jsx'
 import Home from './pages/accueil.jsx'
 import Page1 from './pages/page1.jsx'
 
-import './index.css'
+// import './index.css'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import {
@@ -19,7 +19,7 @@ const theme = createTheme({
     },
     secondary: {
       main: '#C295B0ff', // Couleur secondaire (light pink)
-    },
+    }
   },
   // Ajoutez d'autres configurations de thème si nécessaire
 });

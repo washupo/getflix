@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { ThemeProvider, styled, useTheme } from '@mui/material/styles';
+import React from 'react';
+import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -20,23 +20,14 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
 
-const Body = () => {
-  const bodyStyle = {
-    backgroundColor: 'black',
-    color: 'white',
-    minHeight: '100vh', // Si vous souhaitez que le fond noir prenne au moins 100% de la hauteur de la vue
-    padding: '20px', // Ajoutez un espace de remplissage si nécessaire
-  };
+import { Container } from "@mui/material";
 
-  return (
-    <div style={bodyStyle}>
-      <h1>Bienvenue sur la page avec fond noir</h1>
-      <p>Ce texte est sur fond noir.</p>
-    </div>
-  );
-};
+export function App(){
+  return <Container sx={({bgcolor:'pink', height:'100vh'})}>
+    Hello les girls
+  </Container>
+}
 
-// export default Body;
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -84,7 +75,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function PersistentDrawerLeft() {
+export function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
