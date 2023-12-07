@@ -41,16 +41,12 @@ const App = () => {
 const router = createBrowserRouter([
   {
     path: "/",
-<<<<<<< HEAD
-    element: <App />,
-=======
     element: (
       <>
         <Cookies />
         <Root />
       </>
     ),
->>>>>>> authentification
     errorElement: <div>404</div>,
     children: [
       {
@@ -60,15 +56,11 @@ const router = createBrowserRouter([
       {
         path: "/page1",
         element: <Page1 />,
-<<<<<<< HEAD
-      }
-=======
       },
       {
         path: "/login",
         element: <Login />,
       },
->>>>>>> authentification
     ]
   },
 ]);
