@@ -1,11 +1,8 @@
 import React from 'react'
 import Button from '@mui/material/Button';
 import ResponsiveAppBar from '../components/appbar';
-import { jsx } from '@emotion/react';
-import { Grid, Paper, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Box, Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography } from '@mui/material';
-import { ExpandMore } from '@mui/icons-material';
+import { Grid, Paper, Box, Avatar, Card, CardContent, CardHeader, CardMedia, IconButton, Typography } from '@mui/material';
 import { red } from '@mui/material/colors';
-import ColorTabs from '../components/tabs';
 
 //// theme provider pour le theme couleur //////////
 const Mynav = () => {
@@ -27,7 +24,6 @@ const affiches = [
     titre: 'Film 2',
     image: 'https://placekitten.com/345/194'
   },
-
   {
     titre: 'Film 3',
     image: 'https://placekitten.com/345/194'
