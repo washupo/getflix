@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
 
-const app = express();
+//const app = express();
 const fetch = require('node-fetch');
 // Utilisation d'Axios pour effectuer des requêtes HTTP
 
