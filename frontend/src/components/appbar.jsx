@@ -15,8 +15,8 @@ import MenuItem from '@mui/material/MenuItem';
 import { Menu } from '@mui/material';
 import ColorTabs from './tabs';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ['Menu'];
+const settings = ['Profile','Logout'];
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
