@@ -1,27 +1,27 @@
-require('dotenv').config();
+//Importing Libraries 
+require("dotenv").config();
+const app = require(".")
 
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const authRoutes = require('./routes/authRoutes');
-const app = express();
-app.use(cors());
+// Importing the development support form utils/development.js 
+const { printConsole } = require("./utils/development");
 
-// Middleware pour parser les données JSON dans les requêtes
-app.use(express.json());
+/*
+  ===============================================================
+ Importing the port set on the .env, if the port number is not set on .env or the port is being used by another server
+running on the local macchine we are asking the app to use 3000 as the port number 
+  ===============================================================
+*/
+const PORT = process.env.PORT || 3000
 
-// Routes
-app.use('/api/auth', authRoutes);
-
-// Connecter à la base de données MongoDB
-const dbConfig = require('./config/db');
-mongoose.connect(dbConfig.url).then(() => {
-  const PORT = process.env.PORT || 8000
-  // Démarrer le serveur
-  app.listen(PORT, () => {
-    console.log(`Serveur en cours d'écoute sur le port ${PORT}`);
-  })
-}).catch(err => {
-  console.log(err);
-});
-
+//Listing to the app and running it on PORT 5000
+app.listen(PORT, async () => {
+    printConsole(
+        { data: `Server is live @${PORT}` },
+        { printLocation: "index.js:28" },
+        {
+            bgColor: "bgGreen",
+            textColor: "black",
+            underline: true,
+        }
+    )
+})
