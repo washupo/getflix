@@ -4,7 +4,10 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 // URL de connexion à votre base de données MongoDB
-const dbUrl = process.env.MONGODB_URI;
+/* const dbUrl = process.env.MONGODB_URI; */
+const dbUrl = 'mongodb+srv://neb:0K5BmltUhUBpLZtT@chillhome.x0wyt0m.mongodb.net/?retryWrites=true&w=majority';
+console.log('dbUrl', dbUrl)
+
 
 // Connexion à la base de données
 mongoose.connect(dbUrl);

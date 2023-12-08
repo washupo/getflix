@@ -56,6 +56,7 @@ app.get('/movies', async (req, res, next) => {
 
 // Connecter à la base de données MongoDB
 const dbConfig = require('./config/db');
+/* 
 mongoose.connect(dbConfig.url).then(() => {
   const PORT = process.env.PORT || 8000
   // Démarrer le serveur
@@ -65,4 +66,12 @@ mongoose.connect(dbConfig.url).then(() => {
 }).catch(err => {
   console.log(err);
 });
+ */
 
+
+
+const PORT = process.env.PORT || 8000
+  // Démarrer le serveur
+  app.listen(PORT, () => {
+    console.log(`Serveur en cours d'écoute sur le port ${PORT}`);
+  })
