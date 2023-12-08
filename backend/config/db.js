@@ -1,30 +1,39 @@
-//Configuration de la base de donnée
-// Path: backend/config/db.js
-const mongoose = require('mongoose');
-require('dotenv').config();
+// Importing the development support form utils/development.js 
+const { printConsole } = require("../utils/development");
 
-// URL de connexion à votre base de données MongoDB
-/* const dbUrl = process.env.MONGODB_URI; */
-const dbUrl = 'mongodb+srv://neb:0K5BmltUhUBpLZtT@chillhome.x0wyt0m.mongodb.net/?retryWrites=true&w=majority';
-console.log('dbUrl', dbUrl)
+  // URL de connexion à votre base de données MongoDB
+  //Importing the mongoose library used to make the mongodb connection
+const mongoose = require("mongoose")
 
+//Importing the mongodb atlas link 
+const MONGO_DB_URI = process.env.MONGO_REMOTE_URL;
 
-// Connexion à la base de données
-mongoose.connect(dbUrl);
+//creating a function called connectToDB that handles the database connectio 
+const connectToDB = async () => {
+    try {
+      printConsole(
+  
+        { data: "Connecting to MongoDB ......" },
+        { printLocation: "db_config.js:12" },
+        { textColor: "yellow" }
+      );
 
-// Gérer les événements de connexion
-const db = mongoose.connection;
+      //creating the mongodb database connection by using MONOG_DB_URI
+      const DBConnection = await mongoose.connect(MONGO_DB_URI);
+  
+      printConsole(
+        
+        { data: `Database Connected : ${DBConnection.connection.host}` },
+        { printLocation: "db_config.js:24" },
+        {
+          textColor: "green",
+        }
+      );
+    } catch (error) {
+      printConsole(error);
+      process.exit(1);
+    }
+  };
 
-db.on('error', (err) => {
-  console.error('Erreur de connexion à MongoDB :', err);
-});
-
-db.once('open', () => {
-  console.log('Connexion à MongoDB réussie');
-});
-
-// Exporter l'objet de connexion pour être utilisé dans d'autres parties de l'application si nécessaire
-module.exports = {
-  db,
-  url: dbUrl,
-};
+// EXPORTING THE connectToDB function 
+module.exports = connectToDB;

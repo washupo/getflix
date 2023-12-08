@@ -1,12 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Root from './routes/root.jsx'
-import Cookies from './components/Cookies.jsx'; 
-
 
 import Home from './pages/accueil.jsx'
 import Page1 from './pages/page1.jsx'
 import Login from './pages/login.jsx'
+import Signin from './pages/signin.jsx'
 
 // import './index.css'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -41,12 +40,7 @@ const App = () => {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <>
-        <Cookies />
-        <Root />
-      </>
-    ),
+    element: <Root />,
     errorElement: <div>404</div>,
     children: [
       {
@@ -60,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/signin",
+        element: <Signin />,
       },
     ]
   },
