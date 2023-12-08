@@ -1,7 +1,8 @@
 // Importing the development support form utils/development.js 
 const { printConsole } = require("../utils/development");
 
-//Importing the mongoose library used to make the mongodb connection
+  // URL de connexion à votre base de données MongoDB
+  //Importing the mongoose library used to make the mongodb connection
 const mongoose = require("mongoose")
 
 //Importing the mongodb atlas link 

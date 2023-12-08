@@ -7,14 +7,34 @@ import Page1 from './pages/page1.jsx'
 import Login from './pages/login.jsx'
 import Signin from './pages/signin.jsx'
 
-import './index.css'
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+// import './index.css'
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
 import {
   createBrowserRouter, RouterProvider
 } from "react-router-dom"
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#550033ff', // Couleur principale (purple)
+    },
+    secondary: {
+      main: '#C295B0ff', // Couleur secondaire (light pink)
+    }
+  },
+  // Ajoutez d'autres configurations de thème si nécessaire
+});
+
+
+
+const App = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <Root />
+    </ThemeProvider>
+  );
+};
 
 
 const router = createBrowserRouter([

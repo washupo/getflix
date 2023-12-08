@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -18,6 +18,15 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+
+
+import { Container } from "@mui/material";
+
+export function App(){
+  return <Container sx={({bgcolor:'pink', height:'100vh'})}>
+    Hello les girls
+  </Container>
+}
 
 const drawerWidth = 240;
 
@@ -66,7 +75,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function PersistentDrawerLeft() {
+export function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -93,7 +102,8 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Chill home
+          <img height="100%" width="100px" src="../assets/chill.png" alt="Logo" />
+            {/* Chill home */}
           </Typography>
         </Toolbar>
       </AppBar>
