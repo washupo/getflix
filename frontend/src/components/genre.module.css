@@ -1,0 +1,12 @@
+/* example.module.css */
+.readMore {
+    display: flex;
+    justify-content: center;
+}
+
+.titre {
+    margin: 2rem;
+    padding: 2rem;
+    font-size: 1.5rem;
+    background-color: grey;
+}
