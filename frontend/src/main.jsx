@@ -2,9 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Root from './routes/root.jsx'
 
-import Home from './pages/accueil.jsx'
-import Page1 from './pages/page1.jsx'
-import Pressy from './pages/gallerie.jsx'
 
 import './index.css'
 import '@fontsource/roboto/300.css';
@@ -14,6 +11,8 @@ import '@fontsource/roboto/700.css';
 import {
   createBrowserRouter, RouterProvider
 } from "react-router-dom"
+import Landing from './pages/landing.jsx'
+import Login from './pages/login.jsx'
 
 
 const router = createBrowserRouter([
@@ -24,15 +23,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <Landing />,
       },
       {
-        path: "/page1",
-        element: <Page1 />,
-      },
-      {
-        path: "/gallerie",
-        element: <Pressy />,
+        path: "/login",
+        element: <Login />,
       }
     ]
   },
