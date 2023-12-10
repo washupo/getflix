@@ -1,6 +1,6 @@
 import React from 'react'
-import ResponsiveAppBar from '../components/appbar';
 import Genre from '../components/genre';
+import style from './home.module.css';
 
 const response = [
   {
@@ -60,16 +60,11 @@ const response = [
 ]
 
 
-const Page1 = () => (
-  <div> 
-    <div style={{ backgroundColor: '#F6CDEA', minHeight: '100vh' }}>
-    <ResponsiveAppBar />
-
-      {response.map(filmpargenre => <Genre affiches={filmpargenre.films} titre={filmpargenre.genre} />)}
-      
+const Home = () => (
+    <div className={style.container}>
+      {response.map(filmpargenre => <Genre key={filmpargenre.genre} affiches={filmpargenre.films} titre={filmpargenre.genre} />)}
     </div>
-  </div>
 );
 
-export default Page1
+export default Home
 

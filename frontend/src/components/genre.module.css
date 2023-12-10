@@ -8,5 +8,8 @@
     margin: 2rem;
     padding: 2rem;
     font-size: 1.5rem;
-    background-color: grey;
+    background-image: url("\assets\mur rose.png");
+    background-repeat: repeat;
+    background-size: "cover";
+    background-color: #F6CDEA;
 }

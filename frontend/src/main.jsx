@@ -9,7 +9,8 @@ import {
 } from "react-router-dom"
 import Landing from './pages/landing.jsx'
 import Login from './pages/login.jsx'
-import Page1 from './pages/page1.jsx';
+import Home from './pages/home.jsx';
+import Layout from './components/layout.jsx';
 
 const theme = createTheme({
   palette: {
@@ -38,19 +39,23 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <div>404</div>,
+    errorElement: <div style={{ color: 'white' }}>404</div>,
     children: [
       {
         path: "/",
-        element: <Landing />,
+        element: <Layout><Landing /></Layout>,
       },
       {
         path: "/login",
         element: <Login />,
       },
       {
+        path: "/signin",
+        element: <div style={{ color: 'white' }}>SignIN</div>,
+      },
+      {
         path: "/home",
-        element: <Page1 />,
+        element: <Layout><Home /></Layout>,
       }
     ]
   },
