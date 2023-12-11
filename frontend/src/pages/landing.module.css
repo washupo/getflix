@@ -1,0 +1,17 @@
+.layout {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.actions {
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.actionButton {
+    display: block;
+    width: 48%;
+}
