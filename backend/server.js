@@ -35,7 +35,7 @@ app.use(express.json());
 
 
 // Fetch popular movies from TMDB
-const fetchMovies = async (page) => {
+const fetchMovies = async (page = 1) => {
   try {
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.MOVIE_DB_API_KEY}&page=${page}`;
     const options = {

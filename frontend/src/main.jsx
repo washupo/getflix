@@ -5,7 +5,6 @@ import Root from './routes/root.jsx'
 import Home from './pages/home.jsx'
 import Login from './pages/login.jsx'
 
-// import './index.css'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import {
@@ -44,9 +43,8 @@ const App = () => {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <App />,
     errorElement: <div>404</div>,
-    errorElement: <div style={{ color: 'white' }}>404</div>,
     children: [
       {
         path: "/",
