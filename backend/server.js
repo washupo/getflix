@@ -1,11 +1,28 @@
 //Importing Libraries 
 require("dotenv").config();
-const app = require(".")
 
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
-const authRoutes = require('./routes/authRoutes');
+
+//Importing the connectToDB function to the index.js file as it is the main entry to the project 
+const connectToDB = require("./config/db");
+
+//Initalizing the express app
+const app = express();
+
+//calling the function or running the function
+connectToDB();
+
+//Importing the auth routes module
+const auth = require("./routes/authRoutes");
+
+//Adding Node features
+app.use(express.json({limit: "50mb"}));
+app.use(express.urlencoded({ limit:"50mb", extended: true}));
+app.use(cors());
+
+//using the auth route 
+app.use("/api/auth", auth)
 
 //const app = express();
 const fetch = require('node-fetch');
