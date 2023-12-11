@@ -7,16 +7,16 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
-import AdbIcon from '@mui/icons-material/Adb';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Menu } from '@mui/material';
 import ColorTabs from './tabs';
+import { Link } from 'react-router-dom';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ['Menu'];
+const settings = ['Profile','Logout'];
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -86,7 +86,9 @@ function ResponsiveAppBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-        <img height="100%" width="100px" src="../assets/chill.png" alt="Logo" />
+          <Link to="/">
+           <img height="100%" width="100px" src="../assets/chill.png" alt="Logo" />
+          </Link>
           <Typography
             variant="h6"
             noWrap
@@ -102,9 +104,12 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            {/* texte? */}
+           
           </Typography>
-          <ColorTabs /> {/* Intégration du composant ColorTabs */}
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+
+          <ColorTabs /> 
+</Box>
           
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -151,14 +156,16 @@ function ResponsiveAppBar() {
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
             />
+         
           </Search>
-
+    
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="User" src="......" />
               </IconButton>
             </Tooltip>
+            
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"

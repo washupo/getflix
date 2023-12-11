@@ -6,12 +6,12 @@ import Box from '@mui/material/Box';
 export default function ColorTabs() {
   const [value, setValue] = React.useState('one');
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (_event, newValue) => {
     setValue(newValue);
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ paddingLeft:"0", width: '100%' }}>
       <Tabs
         value={value}
         onChange={handleChange}

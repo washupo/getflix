@@ -1,0 +1,15 @@
+/* example.module.css */
+.readMore {
+    display: flex;
+    justify-content: center;
+}
+
+.titre {
+    margin: 2rem;
+    padding: 2rem;
+    font-size: 1.5rem;
+    background-image: url("\assets\mur rose.png");
+    background-repeat: repeat;
+    background-size: "cover";
+    background-color: #F6CDEA;
+}
