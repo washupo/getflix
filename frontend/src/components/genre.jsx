@@ -16,16 +16,6 @@ const Genre = (props) => {
             <Grid key={film} item>
               <Card sx={{ maxWidth: 345 }}>
                 <CardHeader
-                  avatar={
-                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                      R
-                    </Avatar>
-                  }
-                  // mettre un onclick avatar avec le lien vers le form de connection
-                  action={
-                    <IconButton aria-label="settings">
-                    </IconButton>
-                  }
                   title={film.titre}
                   subheader="2016"
                 />

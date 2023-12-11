@@ -104,11 +104,11 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            {/* texte? */}
+           
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 
-          <ColorTabs /> {/* Intégration du composant ColorTabs */}
+          <ColorTabs /> 
 </Box>
           
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -156,14 +156,16 @@ function ResponsiveAppBar() {
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
             />
+         
           </Search>
-
+    
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="User" src="......" />
               </IconButton>
             </Tooltip>
+            
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
