@@ -11,6 +11,7 @@ import {
 } from "react-router-dom"
 import Landing from './pages/landing.jsx'
 import Login from './pages/login.jsx'
+import Account from './pages/account.jsx';
 
 const theme = createTheme({
   palette: {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/account",
+        element: <Account />,
       }
     ]
   },
