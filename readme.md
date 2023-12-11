@@ -4,7 +4,8 @@
 This project was a challenge by team of four during our training at beCode in Bruxelles.
 In this exercise we create a Streaming site (in html / css, javascript and Node.js) inspired by Netflix, Amazon Prime Video and other Popcorn Time, Stremio ... The goal is to display a catalog of movies. Spot the similarities between these platforms (navbar, header, search tool, different categories of videos…).
 
-////// ICI : IMAGE DE NOTRE LANDING PAGE ////
+![image](https://github.com/neb244/getflix/assets/133639183/d48ed448-bcc9-47e8-992f-853b590fbed1)
+
 
 <hr/>
 

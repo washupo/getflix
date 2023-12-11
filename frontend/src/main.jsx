@@ -2,8 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Root from './routes/root.jsx'
 
-
-// import './index.css'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import {
@@ -11,7 +9,12 @@ import {
 } from "react-router-dom"
 import Landing from './pages/landing.jsx'
 import Login from './pages/login.jsx'
+
 import Account from './pages/account.jsx';
+
+import Home from './pages/home.jsx';
+import Layout from './components/layout.jsx';
+
 
 const theme = createTheme({
   palette: {
@@ -40,11 +43,11 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <div>404</div>,
+    errorElement: <div style={{ color: 'white' }}>404</div>,
     children: [
       {
         path: "/",
-        element: <Landing />,
+        element: <Layout><Landing /></Layout>,
       },
       {
         path: "/login",
@@ -53,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "/account",
         element: <Account />,
+      },
+      {
+        path: "/home",
+        element: <Layout><Home /></Layout>,
       }
     ]
   },
