@@ -2,17 +2,19 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Root from './routes/root.jsx'
 
+import Home from './pages/home.jsx'
+import Login from './pages/login.jsx'
+
+// import './index.css'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import {
   createBrowserRouter, RouterProvider
 } from "react-router-dom"
 import Landing from './pages/landing.jsx'
-import Login from './pages/login.jsx'
 
 import Account from './pages/account.jsx';
 
-import Home from './pages/home.jsx';
 import Layout from './components/layout.jsx';
 
 
@@ -42,7 +44,8 @@ const App = () => {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Root />,
+    errorElement: <div>404</div>,
     errorElement: <div style={{ color: 'white' }}>404</div>,
     children: [
       {
@@ -51,11 +54,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login />,
+        element: <Login />
       },
       {
         path: "/account",
-        element: <Account />,
+        element: <Account />
       },
       {
         path: "/home",

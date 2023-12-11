@@ -1,53 +1,80 @@
+//Importing Libraries 
+require("dotenv").config();
+const app = require(".")
+
 const express = require('express');
 const mongoose = require('mongoose');
-const Note = require('./models/schemas');
-const { User, Content } = require('./models/schemas');
-const bodyParser = require('body-parser')
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt') 
+const cors = require('cors');
+const authRoutes = require('./routes/authRoutes');
 
-const app = express();
-const port = 3000; // Choisis le port que tu préfères, par exemple 3000
+//const app = express();
+const fetch = require('node-fetch');
+// Utilisation d'Axios pour effectuer des requêtes HTTP
 
-mongoose.connect('mongodb+srv://washupo:Tu6q0SYQcKxsmLBR@chillhome.x0wyt0m.mongodb.net/?retryWrites=true&w=majority');
-
-const db = mongoose.connection;
-
-db.on('error', console.error.bind(console, 'Erreur de connexion à la base de données :'));
-
-db.once('open', () => {
-  console.log('Connecté à la base de données MongoDB');
-});
+app.use(cors());
 
 // Middleware pour parser les données JSON dans les requêtes
 app.use(express.json());
-app.use(bodyParser.json())
 
-// Route pour enregistrer un nouvel utilisateur
-app.post('/users', async (req, res) => {
-    const { username, email, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password,10);
+
+// Fetch popular movies from TMDB
+const fetchMovies = async (page) => {
   try {
-    
-    // Créer une nouvelle instance du modèle User
-    const newUser = new User({ username, email, password: hashedPassword });
+    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.MOVIE_DB_API_KEY}&page=${page}`;
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODlmMzQ2NDlmMDBlMTMxYzBkYzAxYTkwMjhkYjY4ZCIsInN1YiI6IjY1NzA4NTllNzlhMWMzMDBlMThlN2U2ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6WbmzdN4CKbAjO7tpCS9dGmrmy2stUwRFDmxaPW1MbA' // Remplace par ton jeton JWT
+      }
+    };
 
-    // Enregistrer l'utilisateur dans la base de données
-    const savedUser = await newUser.save();
-
-    res.status(201).json(savedUser);
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return data.results;
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Erreur lors de l\'enregistrement de l\'utilisateur.' });
+    return [];
+  }
+};
+// Routes
+
+app.get('/movies', async (req, res, next) => {
+  try {
+    const { page } = req.query;
+    const data = await fetchMovies(page);
+
+    return res.status(200).json({
+      status: 200,
+      message: `${data.length} movies found`,
+      data,
+    });
+  } catch (err) {
+    return next(err);
   }
 });
 
-// Route pour se connecter
 
-// Exemple de middleware pour vérifier le token
+// Importing the development support form utils/development.js 
+const { printConsole } = require("./utils/development");
 
-// Route pour protéger le token
+/*
+  ===============================================================
+ Importing the port set on the .env, if the port number is not set on .env or the port is being used by another server
+running on the local macchine we are asking the app to use 3000 as the port number 
+  ===============================================================
+*/
+const PORT = process.env.PORT || 3000
 
-app.listen(port, () => {
-  console.log(`Serveur en cours d'exécution sur le port ${port}`);
+//Listing to the app and running it on PORT 5000
+app.listen(PORT, async () => {
+    printConsole(
+        { data: `Server is live @${PORT}` },
+        { printLocation: "index.js:28" },
+        {
+            bgColor: "bgGreen",
+            textColor: "black",
+            underline: true,
+        }
+    )
 })
