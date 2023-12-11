@@ -9,8 +9,12 @@ import {
 } from "react-router-dom"
 import Landing from './pages/landing.jsx'
 import Login from './pages/login.jsx'
+
+import Account from './pages/account.jsx';
+
 import Home from './pages/home.jsx';
 import Layout from './components/layout.jsx';
+
 
 const theme = createTheme({
   palette: {
@@ -50,8 +54,8 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/signin",
-        element: <div style={{ color: 'white' }}>SignIN</div>,
+        path: "/account",
+        element: <Account />,
       },
       {
         path: "/home",
