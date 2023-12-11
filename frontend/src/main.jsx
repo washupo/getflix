@@ -4,7 +4,6 @@ import Root from './routes/root.jsx'
 
 import Home from './pages/accueil.jsx'
 import Page1 from './pages/page1.jsx'
-import Pressy from './pages/gallerie.jsx'
 
 import './index.css'
 import '@fontsource/roboto/300.css';
@@ -30,10 +29,10 @@ const router = createBrowserRouter([
         path: "/page1",
         element: <Page1 />,
       },
-      {
-        path: "/gallerie",
-        element: <Pressy />,
-      }
+      // {
+      //   path: "/",
+      //   element: <SignUp />,
+      // },
     ]
   },
 ]);
