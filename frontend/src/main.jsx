@@ -15,14 +15,15 @@ import Landing from './pages/landing.jsx'
 import Account from './pages/account.jsx';
 
 import Layout from './components/layout.jsx';
-
+import Fiche from './pages/fiche.jsx'
 
 const theme = createTheme({
   palette: {
     primary: {
       main: '#550033ff', // Couleur principale (purple)
+      
     },
-    secondary: {
+    secondary: { 
       main: '#C295B0ff', // Couleur secondaire (light pink)
     }
   },
@@ -61,7 +62,11 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: <Layout><Home /></Layout>,
-      }
+      },
+      {
+        path: "/fiche",
+        element: <Layout><Fiche /></Layout>,
+      },
     ]
   },
 ]);
