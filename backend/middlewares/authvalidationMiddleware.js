@@ -1,5 +1,5 @@
 const validator = require("../utils/validate")
-
+//ERREUUUUUUUUUUR
 const regsiterValidation = async (req, res, next) => {
     const validateRule = {
         "fullName": "required|string|min:3", 
