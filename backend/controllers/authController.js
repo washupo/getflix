@@ -164,7 +164,7 @@ const userProfile = asyncHandler(async (req, res, next) => {
         const verifyUser = await userModel.findOne({ userId: id })
 
         if (!verifyUser) {
-            return res.status(403).json({
+            return res.status(404).json({
                 message: "user not found",
                 success: false,
             })
