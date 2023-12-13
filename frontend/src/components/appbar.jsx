@@ -87,6 +87,7 @@ function ResponsiveAppBar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/">
+          Chill
            <img height="100%" width="100px" src="../assets/chill.png" alt="Logo" />
           </Link>
           <Typography
