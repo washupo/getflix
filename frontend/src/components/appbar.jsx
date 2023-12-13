@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -14,6 +14,10 @@ import MenuItem from '@mui/material/MenuItem';
 import { Menu } from '@mui/material';
 import ColorTabs from './tabs';
 import { Link } from 'react-router-dom';
+import axios from 'axios'; // Ajoutez ceci s'il n'est pas déjà importé
+import Film from '../components/film';
+
+
 
 const pages = ['Menu'];
 const settings = ['Profile','Logout'];
@@ -63,24 +67,52 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 //   marginLeft: theme.spacing(2),
 // }));
 
+
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [suggestions, setSuggestions] = useState([]);
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false); // Ajout de l'état isLoading
+  const [data, setData] = useState([]); // Ajout de l'état data
+
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleSearchChange = (event) => {
+  const searchWord = event.target.value;
+  axios.get(`http://localhost:8000/movies?search=${searchWord}`)
+    .then((response) => {
+      if (response.data && response.data.movies) {
+        const movies = response.data.movies;
+        setSuggestions(movies);
+      } else {
+        console.error('Aucune suggestion trouvée.');
+        setSuggestions([]);
+      }
+      setIsLoading(false); // Arrêter l'indicateur de chargement
+    })
+    .catch((error) => {
+      console.error('Erreur de recherche:', error);
+      setSuggestions([]);
+      setIsLoading(false); // Arrêter l'indicateur de chargement en cas d'erreur
+    });
+  setIsLoading(true); // Démarre l'indicateur de chargement lors de la recherche
+};
 
   return (
     <AppBar position="static">
@@ -149,15 +181,35 @@ function ResponsiveAppBar() {
           </Box>
 
           <Search>
-            <SearchIconWrapper>
-              {/* <SearchIcon /> */}
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-         
-          </Search>
+        <SearchIconWrapper>
+          {/* ... (SearchIcon) */}
+        </SearchIconWrapper>
+        <StyledInputBase
+          placeholder="Rechercher un film..."
+          inputProps={{ 'aria-label': 'search' }}
+          onChange={handleSearchChange} // Utiliser handleSearchChange pour la recherche */}
+        />
+
+        {/* Affichage des suggestions */}
+        <div>
+          {suggestions.map((movie) => (
+            <div key={movie.id}>{movie.title}</div>
+          ))}
+        </div>
+        <div>
+          {error && <div style={{ color: 'red' }}>{error}</div>}
+          {/* //Affichage des films */}
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            <div>
+              {data.map((film) => (
+                <Film key={film.title} image={`https://image.tmdb.org/t/p/w500${film.poster_path}`} titre={film.title} />
+              ))}
+            </div>
+          )}
+        </div>
+      </Search>
     
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">

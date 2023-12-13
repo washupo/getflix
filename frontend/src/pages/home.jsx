@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import style from './home.module.css';
 import axios from 'axios';
 import Film from '../components/film';
+import ResponsiveAppBar from '../components/appbar'; // Assurez-vous de mettre le bon chemin d'accès à votre AppBar
+
 
 const Home = () => {
   const [data, setData] = useState(null);
@@ -23,5 +25,5 @@ const Home = () => {
   );
 }
 
-export default Home
 
+export default Home
