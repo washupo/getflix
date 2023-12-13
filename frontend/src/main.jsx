@@ -5,7 +5,6 @@ import Root from './routes/root.jsx'
 import Home from './pages/home.jsx'
 import Login from './pages/login.jsx'
 
-// import './index.css'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import {
@@ -16,16 +15,19 @@ import Landing from './pages/landing.jsx'
 import Account from './pages/account.jsx';
 
 import Layout from './components/layout.jsx';
+
 import Parametres from './pages/parametres.jsx';
 
+import Fiche from './pages/fiche.jsx'
 
 
 const theme = createTheme({
   palette: {
     primary: {
       main: '#550033ff', // Couleur principale (purple)
+      
     },
-    secondary: {
+    secondary: { 
       main: '#C295B0ff', // Couleur secondaire (light pink)
     }
   },
@@ -46,7 +48,7 @@ const App = () => {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <App />,
     errorElement: <div>404</div>,
 
     children: [
@@ -69,12 +71,13 @@ const router = createBrowserRouter([
       {
         path: "/parametres",
         element: <Layout><Parametres /></Layout>,
-
       },
+      {
+        path: "/fiche",
+        element: <Layout><Fiche /></Layout>,
+      },
+    ]
 
-
-
-          ]
   },
           ]);
 

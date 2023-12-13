@@ -1,70 +1,29 @@
-import React from 'react'
-import Genre from '../components/genre';
+import React, { useEffect, useState } from 'react'
 import style from './home.module.css';
+import axios from 'axios';
+import Film from '../components/film';
 
-const response = [
-  {
-    genre: 'comedie',
-    films: [{
-      titre: 'Film 1',
-      image: 'https://placekitten.com/345/194'
-    },
-    {
-      titre: 'Film 2',
-      image: 'https://placekitten.com/345/194'
-    },
-    {
-      titre: 'Film 3',
-      image: 'https://placekitten.com/345/194'
-    },
-    {
-      titre: 'Film 2',
-      image: 'https://placekitten.com/345/194'
-    },
-    {
-      titre: 'Film 3',
-      image: 'https://placekitten.com/345/194'
-    }
-  ]
-  },
-  {
-    genre: 'horreur',
-    films: [{
-      titre: 'Film 4',
-      image: 'https://placekitten.com/345/194'
-    },
-    {
-      titre: 'Film 5',
-      image: 'https://placekitten.com/345/194'
-    },
-    {
-      titre: 'Film 6',
-      image: 'https://placekitten.com/345/194'
-    }]
-  },
-  {
-    genre: 'drame',
-    films: [{
-      titre: 'Film 7',
-      image: 'https://placekitten.com/345/194'
-    },
-    {
-      titre: 'Film 8',
-      image: 'https://placekitten.com/345/194'
-    },
-    {
-      titre: 'Film 9',
-      image: 'https://placekitten.com/345/194'
-    }]
-  }
-]
+const Home = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    axios.get('http://localhost:8000/movies?page=2')
+      .then(function (response) {
+        // handle success
+        console.log(response);
+        setData(response.data.data);
+      })
+      .catch((e) => console.log('erreur', e))
+  }, []);
 
 
-const Home = () => (
-    <div className={style.container}>
-      {response.map(filmpargenre => <Genre key={filmpargenre.genre} affiches={filmpargenre.films} titre={filmpargenre.genre} />)}
-    </div>
-);
+  return (
+      <div className={style.container}>
+        {!data?.length ? <h1 style={{ color: 'white '}}>Erreur</h1> : null}
+        {data?.map(film => <Film key={film.title} image={`https://image.tmdb.org/t/p/w500${film.poster_path}`} titre={film.title} />)}
+      </div>
+  );
+}
 
 export default Home
 

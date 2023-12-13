@@ -15,8 +15,8 @@ const Landing = () => {
         <Link className={style.actionButton} to="/login">
           <Button style={{ width: "100%" }} variant="contained">Login</Button>
         </Link>
-        <Link className={style.actionButton} to="/signin">
-          <Button style={{ width: "100%" }} variant="contained">Sign in</Button>
+        <Link className={style.actionButton} to="/account">
+          <Button style={{ width: "100%" }} variant="contained">Sign up</Button>
         </Link>
         </div>
       </div>

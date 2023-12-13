@@ -1,0 +1,11 @@
+.container {
+    background-image: url('/assets/noel.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.overlay {
+    display: flex;
+    background: linear-gradient(270deg, transparent, #000);
+}
