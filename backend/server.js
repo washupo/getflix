@@ -6,7 +6,6 @@ const cors = require('cors');
 const path = require("path")
 const https = require('https');
 const fs = require('fs');
-const cookieParser = require("cookie-parser");
 
 //Initalizing the express app
 const app = express();
@@ -25,20 +24,11 @@ app.use(cors({
   credentials: true, // Enable credentials (cookies)
 }));
 
-// Middleware pour parser les cookies
-app.use(cookieParser());
-
 //Importing the auth routes module
 const auth = require("./routes/authRoutes");
 
 //using the auth route 
-app.use("/api/auth", auth);
-
-// Importing the verifyToken middleware
-const verifyToken = require("./middlewares/authMiddleware");
-
-// Applying the verifyToken middleware
-app.use("/api/auth/profile", verifyToken);
+app.use("/api/auth", auth)
 
 const options = {
   key: fs.readFileSync('./server.key'),
