@@ -54,6 +54,8 @@ const fetchMovies = async (page = 1) => {
     return [];
   }
 };
+
+
 // Routes
 
 app.get('/movies', async (req, res, next) => {
@@ -71,6 +73,30 @@ app.get('/movies', async (req, res, next) => {
   }
 });
 
+app.get('/movies/search', async (req, res, next) => {
+  try {
+    const { query } = req.query;
+
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_DB_API_KEY}&query=${query}`;
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+      },
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    return res.status(200).json({
+      status: 200,
+      message: `${data.results.length} movies found for query: ${query}`,
+      data: data.results,
+    });
+  } catch (err) {
+    return next(err);
+  }
+});
 
 // Importing the development support form utils/development.js 
 const { printConsole } = require("./utils/development");
