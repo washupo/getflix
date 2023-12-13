@@ -8,15 +8,17 @@ const Film = (props) => {
     const { image, titre } = props
 
     return (
-        <div>
-         <div className={classes.titre}>{titre}</div>
+        <div style={{ width: "300px", height: "250px", marginLeft: "10px", marginTop: "30px" }}>
+
+
         <Grid container justifyContent="center" spacing={2}>
             <Grid key={titre} item>
-              <Card sx={{ maxWidth: 345 }}>
-                <CardHeader
+              <Card sx={{ width: '100%' }}>
+              <div className={classes.titre}>{titre}</div>
+                {/* <CardHeader
                   title={titre}
                   subheader="2016"
-                />
+                /> */}
                 <CardMedia
                   component="img"
                   height="194"
@@ -33,9 +35,7 @@ const Film = (props) => {
               </Card>
             </Grid>
         </Grid>
-          <div className={classes.readMore}>
-            <Button color="primary">More movies</Button>
-          </div>
+        
         </div>
     );
       

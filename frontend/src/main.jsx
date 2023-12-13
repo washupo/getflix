@@ -54,7 +54,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Layout><Landing /></Layout>,
+        element: <Landing />,
       },
       {
         path: "/login",

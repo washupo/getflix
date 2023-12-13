@@ -3,7 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 
-export default function ColorTabs() {
+export default function Menu() {
   const [value, setValue] = React.useState('one');
 
   const handleChange = (_event, newValue) => {
