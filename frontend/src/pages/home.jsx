@@ -13,6 +13,7 @@ const Home = () => {
         console.log(response);
         setData(response.data.data);
       })
+      .catch((e) => console.log('erreur', e))
   }, []);
 
   // Utilisez updateMovies pour mettre à jour les films
@@ -22,14 +23,14 @@ const Home = () => {
 
   return (
     <div className={style.container}>
+     {!data?.length ? <h1 style={{ color: 'white '}}>Erreur</h1> : null}
       {data?.map(film => (
         <Film
           key={film.title}
           image={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
           titre={film.title}
-        />
-      ))}
-    </div>
+          />)}
+      </div>
   );
 };
 
