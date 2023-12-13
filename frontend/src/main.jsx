@@ -16,6 +16,8 @@ import Landing from './pages/landing.jsx'
 import Account from './pages/account.jsx';
 
 import Layout from './components/layout.jsx';
+import Parametres from './pages/parametres.jsx';
+
 
 
 const theme = createTheme({
@@ -46,7 +48,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     errorElement: <div>404</div>,
-    errorElement: <div style={{ color: 'white' }}>404</div>,
+
     children: [
       {
         path: "/",
@@ -62,14 +64,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/home",
-        element: <Layout><Home /></Layout>,
-      }
-    ]
-  },
-]);
+        element: <Layout><Home /></Layout>
+      },
+      {
+        path: "/parametres",
+        element: <Layout><Parametres /></Layout>,
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
-)
+      },
+
+
+
+          ]
+  },
+          ]);
+
+          ReactDOM.createRoot(document.getElementById('root')).render(
+          <React.StrictMode>
+            <RouterProvider router={router} />
+          </React.StrictMode>,
+          )
