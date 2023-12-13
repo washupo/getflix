@@ -24,43 +24,44 @@ export default function SignInSide() {
   };
 
   return (
-    <Grid container component="main" sx={{ height: '100vh', justifyContent: 'center'}}>
-      <CssBaseline />
-      <Grid
-        item
-        xs={12}
-        sm={4}
-        md={7}
-        sx={{
-          backgroundImage: 'url(https://pics.craiyon.com/2023-09-14/6bb75488481c43bfb4590dfbcf35c96d.webp)',
-          backgroundRepeat: 'no-repeat',
-          backgroundColor: 'black',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-         
-        }}
-      >
-        
-      </Grid>
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-      <Box
+      <Grid container component="main" sx={{ height: '100vh', widht: '100vh', justifyContent: 'center'}}>
+
+        <CssBaseline />
+        <Grid
+          item
+          xs={12}
+          sm={4}
+          md={7}
           sx={{
-            my: 11,
-            mx: 4,
+            backgroundImage: 'url(https://pics.craiyon.com/2023-09-14/6bb75488481c43bfb4590dfbcf35c96d.webp)',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: (t) =>
+              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
             display: 'flex',
-            flexDirection: 'column',
             alignItems: 'center',
-            bgcolor: '#9A1665',
-            color: 'black',
-            padding: '0',
-            
-            borderRadius: '7px',
-            boxShadow: '10px 10px 10px rgba(12, 12, 12, 12)', // Add boxShadow here
+            justifyContent: 'center',
           }}
         >
+          {/* Vous pouvez ajouter du contenu ici si nécessaire */}
+        </Grid>
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <Box
+            sx={{
+              my: 11,
+              mx: 4,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              bgcolor: '#9A1665',
+              color: 'black',
+              padding: '0',
+              boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+              borderRadius: '7px'
+              
+            }}
+          >
             <Avatar sx={{ m: 1,  bgcolor: 'black' }}>
               <LockOutlinedIcon />
             </Avatar>
