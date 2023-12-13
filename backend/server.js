@@ -3,36 +3,52 @@ require("dotenv").config();
 
 const express = require('express');
 const cors = require('cors');
-
-//Importing the connectToDB function to the index.js file as it is the main entry to the project 
-const connectToDB = require("./config/db");
+const path = require("path")
+const https = require('https');
+const fs = require('fs');
+const cookieParser = require("cookie-parser");
 
 //Initalizing the express app
 const app = express();
 
-//calling the function or running the function
+//Importing the connectToDB function to the index.js file as it is the main entry to the project + calling the function or running the function
+const connectToDB = require("./config/db");
 connectToDB();
+
+//Adding Node features
+// Middleware pour parser les données JSON dans les requêtes
+app.use(express.json({limit: "50mb"}));
+app.use(express.urlencoded({ limit:"50mb", extended: true}));
+// app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173', // Update with your React app's URL
+  credentials: true, // Enable credentials (cookies)
+}));
+
+// Middleware pour parser les cookies
+app.use(cookieParser());
 
 //Importing the auth routes module
 const auth = require("./routes/authRoutes");
 
-//Adding Node features
-app.use(express.json({limit: "50mb"}));
-app.use(express.urlencoded({ limit:"50mb", extended: true}));
-app.use(cors());
-
 //using the auth route 
-app.use("/api/auth", auth)
+app.use("/api/auth", auth);
+
+// Importing the verifyToken middleware
+const verifyToken = require("./middlewares/authMiddleware");
+
+// Applying the verifyToken middleware
+app.use("/api/auth/profile", verifyToken);
+
+const options = {
+  key: fs.readFileSync('./server.key'),
+  cert: fs.readFileSync('./server.crt')
+};
+
+const server = https.createServer(options, app);
 
 //const app = express();
 const fetch = require('node-fetch');
-// Utilisation d'Axios pour effectuer des requêtes HTTP
-
-app.use(cors());
-
-// Middleware pour parser les données JSON dans les requêtes
-app.use(express.json());
-
 
 // Fetch popular movies from TMDB
 const fetchMovies = async (page = 1) => {
@@ -57,7 +73,6 @@ const fetchMovies = async (page = 1) => {
 
 
 // Routes
-
 app.get('/movies', async (req, res, next) => {
   try {
     const { page } = req.query;
@@ -110,7 +125,7 @@ running on the local macchine we are asking the app to use 3000 as the port numb
 const PORT = process.env.PORT || 3000
 
 //Listing to the app and running it on PORT 5000
-app.listen(PORT, async () => {
+server.listen(PORT, async () => {
     printConsole(
         { data: `Server is live @${PORT}` },
         { printLocation: "index.js:28" },
