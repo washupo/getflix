@@ -25,6 +25,7 @@ export default function SignInSide() {
 
   return (
 
+
     <Grid container component="main" sx={{ height: '0vh', width: '60%', justifyContent: 'center', mt: 15, mb: 5, mr: 15, ml: 40 }}>
 
       
@@ -66,9 +67,10 @@ export default function SignInSide() {
         <Box
           sx={{
 
+
             display: 'flex',
-            flexDirection: 'column',
             alignItems: 'center',
+
             bgcolor: '#9A1665',
             color: 'black',
             padding: '0',
@@ -141,6 +143,9 @@ export default function SignInSide() {
                 <Link href="#" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
+
+            
+
               </Grid>
             </Grid>
             <Copyright sx={{ mt: 5 }} />

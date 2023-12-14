@@ -13,10 +13,6 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Copyright } from './CopyRight';
-import { autocompleteClasses } from '@mui/material';
-
-
-
 
 const defaultTheme = createTheme();
 
@@ -33,89 +29,85 @@ export default function SignUp() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <style>
-  {`
-    body {
-      background-color: black;
-    }
-    .form-elements > * {
-      margin-bottom: 8px;
-    }
-  `}
-</style>
-
-
-        <Box
+        <CssBaseline />        <Box
           sx={{
-        
-            my: 'auto',
-            mx: 'auto',
-            padding: 12,
-            mt: 7,
-            mb: 7,
+            my: 5,
+            mx: 5,
+            padding: 10,
+            marginTop: 20,
+            marginBottom: 20,
+            marginRight:  20,
+            marginLeft: 20,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: 2,
             bgcolor: '#9A1665',
-            borderRadius: '12px',
-            width: '150%',
-            height: '100%', 
-            
+            width: 600,
+            height: 600
           }}
         >
+
+
+
           <Avatar sx={{ m: 1, bgcolor: 'black' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3, mb: 3}}>
-          
-            <TextField
-              autoComplete="given-name"
-              name="firstName"
-              required
-              fullWidth
-              id="firstName"
-              label="First Name"
-              autoFocus
-              sx={{ mb: 2 }}
-            />
-            
-            <TextField
-              required
-              fullWidth
-              id="lastName"
-              label="Last Name"
-              name="lastName"
-              autoComplete="family-name"
-              sx={{ mb: 2 }}
-            />
-            <TextField
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              sx={{ mb: 2 }}
-            />
-            <TextField
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="new-password"
-              sx={{ mb: 2 }}
-            />
-            <FormControlLabel
-              control={<Checkbox value="allowExtraEmails" />}
-              label="I want to receive inspiration, marketing promotions and updates via email."
-            />
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="given-name"
+                  name="firstName"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="First Name"
+                  autoFocus
+
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="Last Name"
+                  name="lastName"
+                  autoComplete="family-name"
+
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControlLabel
+                  control={<Checkbox value="allowExtraEmails" background-color="black" />}
+                  label="I want to receive inspiration, marketing promotions and updates via email."
+                />
+              </Grid>
+            </Grid>
             <Button
               type="submit"
               fullWidth
@@ -126,28 +118,24 @@ export default function SignUp() {
                 bgcolor: 'black',
                 color: 'white',
                 width: '50%',
+                marginLeft: '25%',
                 '&:hover': {
-                  bgcolor: '#FC7CC9',
+                  bgcolor: 'pink'
                 },
               }}
             >
               Sign Up
-            </Button>
-            
-            <Link
-              href="#"
-              variant="body2"
-              sx={{
-                display: 'block', 
-                paddingY: 2,      
-              }}
-            >
-              Already have an account? Sign in
-            </Link>
-              
+            </Button> 
+            <Grid container justifyContent="flex-end" >
+              <Grid item>
+                <Link href="#" variant="body2">
+                  Already have an account? Sign in
+                </Link>
+              </Grid>
+            </Grid>
           </Box>
-        
-        <Copyright sx={{ }} /></Box>
+        </Box>
+        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );
