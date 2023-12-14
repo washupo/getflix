@@ -9,13 +9,15 @@ import style from './cards.module.css'
 export default function BasicCard(props) {
     return (
         <Card
-            style={{ background: 'none', color: '' }}
+            style={{
+                background: 'none',
+                color: 'white',
+                padding: '2rem',
+                boxShadow: 'none',
+            }}
             className={style.movieCard}
         >
             <CardContent>{props.children}</CardContent>
-            <CardActions>
-                <Button size="small">Learn More</Button>
-            </CardActions>
         </Card>
     )
 }

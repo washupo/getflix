@@ -101,7 +101,6 @@ export default function SignUp() {
                             autoComplete="email"
                             sx={{ mb: 2 }}
                         />
-
                         <TextField
                             required
                             fullWidth
@@ -112,12 +111,10 @@ export default function SignUp() {
                             autoComplete="new-password"
                             sx={{ mb: 2 }}
                         />
-
                         <FormControlLabel
                             control={<Checkbox value="allowExtraEmails" />}
                             label="I want to receive inspiration, marketing promotions and updates via email."
                         />
-
                         <Button
                             type="submit"
                             fullWidth
@@ -139,12 +136,16 @@ export default function SignUp() {
                         <Link
                             href="#"
                             variant="body2"
-                            sx={{ display: 'block', paddingY: 2 }}
+                            sx={{
+                                display: 'block',
+                                paddingY: 2,
+                            }}
                         >
                             Already have an account? Sign in
                         </Link>
                     </Box>
-                    <Copyright />
+
+                    <Copyright sx={{}} />
                 </Box>
             </Container>
         </ThemeProvider>

@@ -13,7 +13,7 @@ import Account from './pages/account.jsx'
 
 import Layout from './components/layout.jsx'
 
-// import Parametres from './pages/parametres.jsx';
+import Parametres from './pages/parametres.jsx'
 
 import Fiche from './pages/fiche.jsx'
 import Home from './pages/home.jsx'
@@ -27,7 +27,6 @@ const theme = createTheme({
             main: '#C295B0ff', // Couleur secondaire (light pink)
         },
     },
-    // Ajoutez d'autres configurations de thème si nécessaire
 })
 
 const App = () => {
@@ -65,12 +64,16 @@ const router = createBrowserRouter([
                     </Layout>
                 ),
             },
-            // {
-            //   path: "/parametres",
-            //   element: <Layout><Parametres /></Layout>,
-            // },
             {
-                path: '/fiche',
+                path: '/parametres',
+                element: (
+                    <Layout>
+                        <Parametres />
+                    </Layout>
+                ),
+            },
+            {
+                path: '/fiche/:id',
                 element: (
                     <Layout>
                         <Fiche />
