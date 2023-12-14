@@ -15,9 +15,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Copyright } from './CopyRight';
 import { autocompleteClasses } from '@mui/material';
 
-
-
-
 const defaultTheme = createTheme();
 
 export default function SignUp() {
@@ -43,12 +40,10 @@ export default function SignUp() {
       margin-bottom: 8px;
     }
   `}
-</style>
-
-
+</style>        
+        
         <Box
           sx={{
-        
             my: 'auto',
             mx: 'auto',
             padding: 12,
@@ -61,61 +56,70 @@ export default function SignUp() {
             bgcolor: '#9A1665',
             borderRadius: '12px',
             width: '150%',
-            height: '100%', 
-            
+            height: '100%'
           }}
         >
+
+
+
           <Avatar sx={{ m: 1, bgcolor: 'black' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3, mb: 3}}>
-          
-            <TextField
-              autoComplete="given-name"
-              name="firstName"
-              required
-              fullWidth
-              id="firstName"
-              label="First Name"
-              autoFocus
-              sx={{ mb: 2 }}
-            />
-            
-            <TextField
-              required
-              fullWidth
-              id="lastName"
-              label="Last Name"
-              name="lastName"
-              autoComplete="family-name"
-              sx={{ mb: 2 }}
-            />
-            <TextField
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              sx={{ mb: 2 }}
-            />
-            <TextField
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="new-password"
-              sx={{ mb: 2 }}
-            />
-            <FormControlLabel
-              control={<Checkbox value="allowExtraEmails" />}
-              label="I want to receive inspiration, marketing promotions and updates via email."
-            />
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3, mb: 3 }}>
+                <TextField
+                  autoComplete="given-name"
+                  name="firstName"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="First Name"
+                  autoFocus
+                  sx={{ mb: 2 }}
+
+                />
+
+                <TextField
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="Last Name"
+                  name="lastName"
+                  autoComplete="family-name"
+                  sx={{ mb: 2 }}
+
+                />
+              
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  sx={{ mb: 2 }}
+
+                />
+              
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
+                  sx={{ mb: 2 }}
+
+                />
+             
+                <FormControlLabel
+                  control={<Checkbox value="allowExtraEmails"/>}
+                  label="I want to receive inspiration, marketing promotions and updates via email."
+                />
+              
             <Button
               type="submit"
               fullWidth
@@ -127,27 +131,19 @@ export default function SignUp() {
                 color: 'white',
                 width: '50%',
                 '&:hover': {
-                  bgcolor: '#FC7CC9',
+                  bgcolor: '#FC7CC9'
                 },
               }}
             >
               Sign Up
-            </Button>
+            </Button> 
             
-            <Link
-              href="#"
-              variant="body2"
-              sx={{
-                display: 'block', 
-                paddingY: 2,      
-              }}
-            >
-              Already have an account? Sign in
-            </Link>
-              
+                <Link href="#" variant="body2" sx={{display: 'block', paddingY : 2, }}>
+                  Already have an account? Sign in
+                </Link>
           </Box>
-        
-        <Copyright sx={{ }} /></Box>
+          <Copyright  />
+        </Box>
       </Container>
     </ThemeProvider>
   );

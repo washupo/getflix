@@ -16,10 +16,9 @@ import Account from './pages/account.jsx';
 
 import Layout from './components/layout.jsx';
 
-import Parametres from './pages/parametres.jsx';
+// import Parametres from './pages/parametres.jsx';
 
 import Fiche from './pages/fiche.jsx'
-
 
 const theme = createTheme({
   palette: {
@@ -33,6 +32,7 @@ const theme = createTheme({
   },
   // Ajoutez d'autres configurations de thème si nécessaire
 });
+
 
 
 
@@ -66,23 +66,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/home",
-        element: <Layout><Home /></Layout>
-      },
-      {
-        path: "/parametres",
-        element: <Layout><Parametres /></Layout>,
-      },
+        element: <Layout><Home /></Layout>,
+      }, 
+      // {
+      //   path: "/parametres",
+      //   element: <Layout><Parametres /></Layout>,
+      // },
       {
         path: "/fiche",
         element: <Layout><Fiche /></Layout>,
       },
     ]
-
   },
-          ]);
+]);
 
-          ReactDOM.createRoot(document.getElementById('root')).render(
-          <React.StrictMode>
-            <RouterProvider router={router} />
-          </React.StrictMode>,
-          )
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>,
+)
