@@ -1,4 +1,8 @@
+
 import React, { useState } from 'react';
+import React from 'react';
+import { styled, alpha } from '@mui/material/styles';
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,9 +15,9 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { Link } from 'react-router-dom';
+
 import Searchbar from './search';
 import MyComponent from './catButton';
-
 
 
 const pages = ['Menu'];
@@ -26,18 +30,18 @@ function ResponsiveAppBar() {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
-  };  
+
+  };
 
   return (
     <AppBar position="static">
@@ -100,7 +104,6 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-
     
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
@@ -139,4 +142,3 @@ function ResponsiveAppBar() {
 }
 
 export default ResponsiveAppBar;
-
