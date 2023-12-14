@@ -9,10 +9,11 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { Menu } from '@mui/material';
-import ColorTabs from './tabs';
+import Menu from '@mui/material/Menu';
 import { Link } from 'react-router-dom';
 import Searchbar from './search';
+import MyComponent from './catButton';
+
 
 
 const pages = ['Menu'];
@@ -43,9 +44,9 @@ function ResponsiveAppBar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/">
-          Chill
            <img height="100%" width="100px" src="../assets/chill.png" alt="Logo" />
           </Link>
+          <MyComponent />
           <Typography
             variant="h6"
             noWrap
@@ -60,14 +61,7 @@ function ResponsiveAppBar() {
               color: 'inherit',
               textDecoration: 'none',
             }}
-          >
-           
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-
-          <ColorTabs /> 
-</Box>
-          
+          />
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -98,9 +92,11 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
+              <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <Typography variant="body1" textAlign="center">
+                  {page}
+                </Typography>
+              </MenuItem>
               ))}
             </Menu>
           </Box>
