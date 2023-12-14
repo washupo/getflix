@@ -1,12 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import BasicCard from '../components/cards';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
 import styles from './fiche.module.css'
+import { useParams } from 'react-router-dom'
+import axios from 'axios';
+const MOVIE_DB_API_KEY = '189f34649f00e131c0dc01a9028db68d'; // Remplacez par votre clé d'API TMDb
 
 export default function Fiche() {
+    const [movie, setMovie] = useState()
+  // const { id } = useParams()
+  const id = 466420
+
+  axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${MOVIE_DB_API_KEY}`)
+          .then((response) => {
+            if (response.data && response.data) {
+              const movie = response.data;
+              setMovie(movie)
+              // setSuggestions(movie);
+            } else {
+              console.error('Aucune suggestion trouvée.');
+              setMovie(movie)
+            }
+          })
+          .catch((error) => {
+            console.error('Erreur de recherche:', error);
+            setMovie(movie)
+          });
+
+  console.log(id)
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -14,7 +39,7 @@ export default function Fiche() {
       <div className={styles.container}>
         <div className={styles.overlay}>
             <BasicCard >
-                <h3>Titre du film</h3>
+                <h3>{movie?.title}</h3>
                 <p>Nombre de like - âge  - Durée - Genre</p>
                 <p>Date de sortie</p>
                 <p>Distribution</p>

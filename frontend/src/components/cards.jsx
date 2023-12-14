@@ -8,7 +8,7 @@ import style from './cards.module.css'
 
 export default function BasicCard(props) {
   return (
-    <Card style={{ background: 'none', color: 'white' }} className={style.movieCard}>
+    <Card style={{ background: 'none', color: '' }} className={style.movieCard}>
       <CardContent>
         {props.children}
       </CardContent>
