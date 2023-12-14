@@ -15,6 +15,9 @@ import Landing from './pages/landing.jsx'
 import Account from './pages/account.jsx';
 
 import Layout from './components/layout.jsx';
+
+// import Parametres from './pages/parametres.jsx';
+
 import Fiche from './pages/fiche.jsx'
 
 const theme = createTheme({
@@ -32,6 +35,7 @@ const theme = createTheme({
 
 
 
+
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -46,6 +50,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     errorElement: <div>404</div>,
+
     children: [
       {
         path: "/",
@@ -62,7 +67,11 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: <Layout><Home /></Layout>,
-      },
+      }, 
+      // {
+      //   path: "/parametres",
+      //   element: <Layout><Parametres /></Layout>,
+      // },
       {
         path: "/fiche",
         element: <Layout><Fiche /></Layout>,

@@ -69,6 +69,7 @@ export default function SignInSide() {
 
 
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
 
             bgcolor: '#9A1665',
