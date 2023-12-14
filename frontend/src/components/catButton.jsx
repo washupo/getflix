@@ -6,7 +6,7 @@ const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
 
 const MyComponent = () => {
-    const MenuProps = {
+    const MenuProps = { margin: 'auto',
         PaperProps: {
             style: {
                 maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
