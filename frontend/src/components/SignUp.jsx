@@ -14,17 +14,63 @@ import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Copyright } from './CopyRight'
 import { autocompleteClasses } from '@mui/material'
+import { useNavigate } from 'react-router-dom';
+
 
 const defaultTheme = createTheme()
 
 export default function SignUp() {
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        const data = new FormData(event.currentTarget)
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        })
+    const navigate = useNavigate();
+
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        // Extract form data from the event
+        const data = new FormData(event.currentTarget);
+
+        try {
+            const response = await fetch('https://localhost:8000/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    fullName: data.get('firstName'),
+                    email: data.get('email'),
+                    password: data.get('password'),
+                    phoneNumber: data.get('lastName'),
+                }),
+                credentials: 'include', // include credentials in the request
+            });
+
+            if (response.status === 201) {
+                // Registration successful
+                console.log(response.body);
+          
+                const result = await response.json();
+                const { token, userId } = result;
+
+            // Save token and userId to local storage
+            localStorage.setItem('token', token);
+            localStorage.setItem('userId', userId);
+          
+                // Redirect to homepage
+                navigate('/home');
+                } else if (response.status === 403) {
+                    // Email already used
+                    console.log("Email already used");
+                    setError('Email already used');
+                } else {
+                    // Handle other status codes if needed
+                    setError('Error during registration');
+                }     
+
+            
+
+        } catch (error) {
+            console.error('Error during authentication:', error.message);
+        }
     }
 
     return (
@@ -86,7 +132,7 @@ export default function SignUp() {
                             required
                             fullWidth
                             id="lastName"
-                            label="Last Name"
+                            label="Phone Number"
                             name="lastName"
                             autoComplete="family-name"
                             sx={{ mb: 2 }}
