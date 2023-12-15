@@ -4,6 +4,7 @@ import style from './landing.module.css'
 import { Link } from 'react-router-dom'
 import { Button } from '@mui/material'
 import imageL1 from '../../assets/famille.jpg'
+import MoviePage from './MoviePage'
 
 const Landing = () => {
     return (
