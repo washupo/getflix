@@ -30,36 +30,64 @@ export default function SignUp() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />        <Box
+      <Container component="main" maxWidth={isDesktop ? 'md' : 'xs'}>
+        <CssBaseline />
+        <style>
+          {`
+            body {
+              background-color: black;
+            }
+            .form-elements > * {
+              margin-bottom: 8px;
+            }
+            .MuiInputBase-input,
+            .MuiFormLabel-root,
+            .MuiTypography-root {
+              color: #FFB6C1;
+            }
+            .MuiOutlinedInput-notchedOutline {
+              border-color: #FFB6C1 !important; 
+            }
+            .MuiInputBase-input:focus,
+            .MuiCheckbox-root.Mui-checked {
+              color: #FFB6C1 !important; 
+            }
+            .MuiFormControlLabel-label {
+              color: #FFB6C1;
+            }
+            .yourwebside-text {
+              color: #FFB6C1;
+                         }
+          `}
+
+        </style>
+
+        <Box
           sx={{
-            my: 5,
-            mx: 5,
-            padding: 10,
-            marginTop: 20,
-            marginBottom: 20,
-            marginRight:  20,
-            marginLeft: 20,
+            my: 'auto',
+            mx: 'auto',
+            padding: 8,
+            mt: 5,
+            mb: 5,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            gap: 2,
             bgcolor: '#9A1665',
-            width: 600,
-            height: 600
+            borderRadius: '8px',
+            width: '100%',
+            height: '100%',
           }}
         >
-
-
-
           <Avatar sx={{ m: 1, bgcolor: 'black' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <form noValidate onSubmit={handleSubmit}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} md={6}>
                 <TextField
                   autoComplete="given-name"
                   name="firstName"
@@ -68,10 +96,10 @@ export default function SignUp() {
                   id="firstName"
                   label="First Name"
                   autoFocus
-
+                  sx={{ mb: 2 }}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} md={6}>
                 <TextField
                   required
                   fullWidth
@@ -79,6 +107,7 @@ export default function SignUp() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  sx={{ mb: 2 }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -89,6 +118,7 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  sx={{ mb: 2 }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -100,12 +130,14 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  sx={{ mb: 2 }}
                 />
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" background-color="black" />}
+                  control={<Checkbox value="allowExtraEmails" />}
                   label="I want to receive inspiration, marketing promotions and updates via email."
+                  sx={{ color: '#FFB6C1' }} // Rose clair
                 />
               </Grid>
             </Grid>
@@ -120,29 +152,28 @@ export default function SignUp() {
                 bgcolor: 'black',
                 color: '#FFB6C1', // Rose clair
                 width: '50%',
-                marginLeft: '25%',
                 '&:hover': {
-                  bgcolor: 'pink'
+                  bgcolor: '#FC7CC9',
                 },
               }}
             >
               Sign Up
             </Button>
-            
-            <Link
-              href="#"
-              variant="body2"
-              sx={{
-                display: 'block', 
-                paddingY: 2,      
-              }}
-            >
-              Already have an account? Sign in
-            </Link>
-              
-          </Box>
-        
-        <Copyright sx={{ }} /></Box>
+          </form>
+
+          <Link
+            href="#"
+            variant="body2"
+            sx={{
+              display: 'block',
+              paddingY: 2,
+              color: '#FFB6C1', // Rose clair
+            }}
+          >
+            Already have an account? Sign in
+          </Link>
+          <Copyright sx={{}} />
+        </Box>
       </Container>
     </ThemeProvider>
   );
