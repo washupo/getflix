@@ -11,181 +11,205 @@ import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
-import { Copyright } from './CopyRight'
-import { useNavigate } from 'react-router-dom';
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { useNavigate } from 'react-router-dom'
+
+const defaultTheme = createTheme({
+    typography: {
+        fontFamily: ['Arial', 'sans-serif'].join(','),
+    },
+    components: {
+        MuiCssBaseline: {
+            styleOverrides: `
+        body {
+          color: #FFB6C1; 
+        }
+      `,
+        },
+        MuiTextField: {
+            styleOverrides: {
+                root: {
+                    '& .MuiInputBase-input': {
+                        color: '#FFB6C1',
+                    },
+                    '& fieldset': {
+                        borderColor: '#FFB6C1 !important',
+                    },
+                    '&:hover fieldset': {
+                        borderColor: '#FFB6C1 !important',
+                    },
+                    '&.Mui-focused fieldset': {
+                        borderColor: '#FFB6C1 !important',
+                    },
+                },
+            },
+        },
+        MuiInputLabel: {
+            styleOverrides: {
+                root: {
+                    color: '#FFB6C1 !important',
+                },
+                focused: {
+                    color: '#FFB6C1 !important',
+                },
+            },
+        },
+        MuiCheckbox: {
+            styleOverrides: {
+                root: {
+                    color: '#FFB6C1 !important',
+                    '&$checked': {
+                        color: '#FFB6C1 !important',
+                    },
+                },
+            },
+        },
+    },
+})
 
 export default function SignInSide() {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-
-        // Extract form data from the event
-        const data = new FormData(event.currentTarget);
-
-        try {
-            const response = await fetch('https://localhost:8000/api/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email: data.get('email'),
-                    password: data.get('password'),
-                }),
-                credentials: 'include', // include credentials in the request
-            });
-
-            if (!response.ok) {
-                throw new Error('Login failed');
-            }
-
-            const result = await response.json();
-            const { token, userId } = result;
-
-            // Save token and userId to local storage
-            localStorage.setItem('token', token);
-            localStorage.setItem('userId', userId);
-
-            // Redirect to '/home'
-            navigate('/home');
-
-        } catch (error) {
-            console.error('Error during authentication:', error.message);
-        }
+    const handleSubmit = () => {
+        navigate('/home')
     }
 
     return (
-        <Grid
-            container
-            component="main"
-            sx={{
-                height: '0vh',
-                width: '60%',
-                justifyContent: 'center',
-                mt: 15,
-                mb: 5,
-                mr: 15,
-                ml: 40,
-            }}
-        >
-            <CssBaseline />
+        <ThemeProvider theme={defaultTheme}>
             <Grid
+                container
+                component="main"
                 item
                 xs={0}
-                sm={4}
-                md={7}
+                sm={0}
+                md={12}
                 sx={{
-                    backgroundImage:
-                        'url(https://pics.craiyon.com/2023-09-14/6bb75488481c43bfb4590dfbcf35c96d.webp)',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundColor: (t) =>
-                        t.palette.mode === 'light'
-                            ? t.palette.grey[50]
-                            : t.palette.grey[900],
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    display: 'flex',
-                    alignItems: 'center',
+                    height: '0vh',
+                    width: '60%',
                     justifyContent: 'center',
-                    borderRadius: '15px',
+                    mt: 15,
+                    mb: 5,
+                    mr: 15,
+                    ml: 40,
+                    bgcolor: 'black',
                 }}
-            ></Grid>
-            <Grid
-                item
-                xs={12}
-                sm={8}
-                md={5}
-                component={Paper}
-                elevation={6}
-                square
             >
-                <Box
+                <CssBaseline />
+                <Grid
+                    item
+                    xs={0}
+                    sm={4}
+                    md={7}
                     sx={{
+                        backgroundImage:
+                            'url(https://pics.craiyon.com/2023-09-14/6bb75488481c43bfb4590dfbcf35c96d.webp)',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundColor: (t) =>
+                            t.palette.mode === 'light'
+                                ? t.palette.grey[50]
+                                : t.palette.grey[900],
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
                         display: 'flex',
-                        flexDirection: 'column',
                         alignItems: 'center',
-
-                        bgcolor: '#9A1665',
-                        color: 'black',
-                        padding: '0',
-                        boxShadow: '2px 4px 10px rgba(2, 4, 6, 0.1)',
+                        justifyContent: 'center',
                     }}
+                ></Grid>
+                <Grid
+                    item
+                    xs={0}
+                    sm={0}
+                    md={5}
+                    component={Paper}
+                    elevation={6}
+                    square
                 >
-                    <Avatar sx={{ m: 1, bgcolor: 'black' }}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Sign in
-                    </Typography>
                     <Box
-                        component="form"
-                        noValidate
-                        onSubmit={handleSubmit}
-                        sx={{ mt: 1, margin: 4 }}
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            bgcolor: '#9A1665',
+                            color: '#FFB6C1',
+                            padding: '30',
+                            boxShadow: '2px 4px 10px rgba(2, 4, 6, 0.1)',
+                        }}
                     >
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
-                            autoFocus
-                        />
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Checkbox value="remember" color="primary" />
-                            }
-                            label="Remember me"
-                        />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{
-                                mt: 3,
-                                mb: 2,
-                                bgcolor: 'black',
-                                color: 'white',
-                                width: '50%',
-                                marginLeft: '25%',
-                                '&:hover': {
-                                    bgcolor: 'pink',
-                                },
-                            }}
+                        <Avatar sx={{ m: 1, bgcolor: 'black' }}>
+                            <LockOutlinedIcon />
+                        </Avatar>
+                        <Typography component="h1" variant="h5">
+                            Sign in
+                        </Typography>
+                        <Box
+                            component="form"
+                            noValidate
+                            onSubmit={handleSubmit}
+                            sx={{ mt: 1, margin: 4 }}
                         >
-                            Se connecter
-                        </Button>
-                        <Grid container>
-                            <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Mot de passe oublié?
-                                </Link>
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="email"
+                                label="Email Address"
+                                name="email"
+                                autoComplete="email"
+                                autoFocus
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="password"
+                                label="Password"
+                                type="password"
+                                id="password"
+                                autoComplete="current-password"
+                            />
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        value="remember"
+                                        color="primary"
+                                    />
+                                }
+                                label="Remember me"
+                            />
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                sx={{
+                                    mt: 3,
+                                    mb: 2,
+                                    bgcolor: 'black',
+                                    color: 'white',
+                                    width: '50%',
+                                    marginLeft: '25%',
+                                    '&:hover': {
+                                        bgcolor: 'pink',
+                                    },
+                                }}
+                            >
+                                Sign In
+                            </Button>
+                            <Grid container>
+                                <Grid item xs>
+                                    <Link href="#" variant="body2">
+                                        Forgot password?
+                                    </Link>
+                                </Grid>
+                                <Grid item>
+                                    <Link href="#" variant="body2">
+                                        {"Don't have an account? Sign Up"}
+                                    </Link>
+                                </Grid>
                             </Grid>
-                            <Grid item>
-                                <Link href="#" variant="body2">
-                                    {
-                                        "Vous n'avez pas encore de compte? Créez un compte"
-                                    }
-                                </Link>
-                            </Grid>
-                        </Grid>
-                        <Copyright sx={{ mt: 5 }} />
+                        </Box>
                     </Box>
-                </Box>
+                </Grid>
             </Grid>
-        </Grid>
+        </ThemeProvider>
     )
 }

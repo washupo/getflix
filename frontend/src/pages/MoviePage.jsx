@@ -1,8 +1,6 @@
 import { Container, ImageList, ImageListItem } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import Searchbar from '../components/search'
-import Fiche from './fiche'
-import Film from '../components/film'
 import { Link } from 'react-router-dom'
 
 function MoviePage() {
