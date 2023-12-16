@@ -6,6 +6,7 @@ const cors = require('cors');
 const path = require("path")
 const https = require('https');
 const fs = require('fs');
+const cookieParser = require("cookie-parser");
 
 //Initalizing the express app
 const app = express();
@@ -18,17 +19,40 @@ connectToDB();
 // Middleware pour parser les données JSON dans les requêtes
 app.use(express.json({limit: "50mb"}));
 app.use(express.urlencoded({ limit:"50mb", extended: true}));
+
 // app.use(cors());
+// const corsOptions = {
+//   origin: '*',
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   optionsSuccessStatus: 204,
+//   exposedHeaders: 'content-type',
+//   credentials: true, // Enable credentials (cookies)
+// };
+
+// app.use(cors(corsOptions));
+
 app.use(cors({
   origin: 'http://localhost:5173', // Update with your React app's URL
   credentials: true, // Enable credentials (cookies)
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: 'Content-Type, Authorization',
 }));
+
+
+// Middleware pour parser les cookies
+app.use(cookieParser());
 
 //Importing the auth routes module
 const auth = require("./routes/authRoutes");
 
 //using the auth route 
 app.use("/api/auth", auth)
+
+// Importing the verifyToken middleware
+const verifyToken = require("./middlewares/authMiddleware");
+
+// Applying the verifyToken middleware
+app.use("/api/auth/profile", verifyToken);
 
 const options = {
   key: fs.readFileSync('./server.key'),
@@ -60,6 +84,7 @@ const fetchMovies = async (page = 1) => {
     return [];
   }
 };
+
 // Routes
 app.get('/movies', async (req, res, next) => {
   try {
@@ -76,7 +101,6 @@ app.get('/movies', async (req, res, next) => {
   }
 });
 
-
 // Importing the development support form utils/development.js 
 const { printConsole } = require("./utils/development");
 
@@ -86,9 +110,9 @@ const { printConsole } = require("./utils/development");
 running on the local macchine we are asking the app to use 3000 as the port number 
   ===============================================================
 */
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8000
 
-//Listing to the app and running it on PORT 5000
+//Listing to the app and running it on PORT 8000
 server.listen(PORT, async () => {
     printConsole(
         { data: `Server is live @${PORT}` },
