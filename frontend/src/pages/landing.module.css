@@ -1,5 +1,6 @@
 .layout {
     background-color: black;
+    margin: 150px;
     display: flex;
     justify-content: center;
 }
@@ -8,10 +9,45 @@
     width: 350px;
     display: flex;
     justify-content: space-between;
-
+    background-color: black;
 }
 
 .actionButton {
     display: block;
     width: 48%;
+    background-color: black;
+}
+
+
+.section0 {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+}
+
+.section1 {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(246, 97, 176);
+    color: white;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.section2 {
+    /* déplacer vers la gauche l'image */
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(6, 6, 6);
+    color: white;
+}
+
+.section3 {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(71, 28, 51);
+    color: white;
 }

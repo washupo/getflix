@@ -1,8 +1,8 @@
 import React from 'react'
-import SignInSide from '../components/SingInSide';
+import SignInSide from '../components/SingInSide'
 
 const Login = () => {
-  return <SignInSide/>
+    return <SignInSide />
 }
 
 export default Login
