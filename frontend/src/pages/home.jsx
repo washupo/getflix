@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import style from './home.module.css'
-import Film from '../components/film'
+import React from 'react'
 import MoviePage from './MoviePage'
 
 const Home = () => {

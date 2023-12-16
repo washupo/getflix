@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import Film from '../components/film'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { styled, alpha } from '@mui/material/styles'
 import InputBase from '@mui/material/InputBase'
@@ -47,30 +46,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const Searchbar = (props) => {
     const { updateMovies } = props
     const [error, setError] = useState('')
-    const [isLoading, setIsLoading] = useState(false) // Ajout de l'état isLoading
-
-    // const handleSuggestionClick = (movie) => {
-    //     axios.get(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=${MOVIE_DB_API_KEY}`)
-    //       .then((response) => {
-    //         if (response.data) {
-    //           setData([response.data]); // Mettre à jour les données avec le film sélectionné
-    //           setSuggestions([]); // Cacher les suggestions après la sélection
-    //           updateMovies(data); // Mettre à jour les films dans Home avec le film sélectionné
-    //         }
-    //       })
-    //       .catch((error) => {
-    //         console.error('Erreur lors de la récupération du film:', error);
-    //         setSuggestions([]);
-    //         setError(error)
-    //       });
-    //   };
-
-    const MOVIE_DB_API_KEY = '189f34649f00e131c0dc01a9028db68d' // Remplacez par votre clé d'API TMDb
 
     const handleSearchChange = (event) => {
         const searchWord = event.target.value
         if (searchWord.trim() !== '') {
-            setIsLoading(true)
             axios
                 .get(
                     `https://api.themoviedb.org/3/search/movie?api_key=${MOVIE_DB_API_KEY}&query=${searchWord}`
@@ -79,19 +58,16 @@ const Searchbar = (props) => {
                     if (response.data && response.data.results) {
                         const movies = response.data.results
                         updateMovies(movies)
-                        // setSuggestions(movies);
                     } else {
                         console.error('Aucune suggestion trouvée.')
                         updateMovies([])
-                        // setSuggestions([]);
+                        setError(error)
                     }
-                    setIsLoading(false)
                 })
                 .catch((error) => {
                     console.error('Erreur de recherche:', error)
                     updateMovies([])
-                    // setSuggestions([]);
-                    setIsLoading(false)
+                    setError(error)
                 })
         } else {
             updateMovies([]) // Si la recherche est vide, réinitialise les suggestions
@@ -113,25 +89,7 @@ const Searchbar = (props) => {
                 }} // Ajout de la largeur fixe à la barre de recherche
             />
 
-            {/* Affichage des suggestions */}
-            {/* <div>
-          {suggestions.map((movie) => (
-            <div key={movie.id} onClick={() => handleSuggestionClick(movie)}>{movie.title}</div>
-           ))}
-        </div> */}
-            <div>
-                {error && <div style={{ color: 'red' }}>{error}</div>}
-                {/* //Affichage des films */}
-                {/* {isLoading ? (
-            <p>Loading...</p>
-          ) : (
-            <div>
-              {data.map((film) => (
-                <Film key={film.title} image={`https://image.tmdb.org/t/p/w500${film.poster_path}`} titre={film.title} />
-              ))}
-            </div>
-          )} */}
-            </div>
+            <div>{error && <div style={{ color: 'red' }}>{error}</div>}</div>
         </Search>
     )
 }
