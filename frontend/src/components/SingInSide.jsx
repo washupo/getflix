@@ -12,7 +12,7 @@ import Grid from '@mui/material/Grid'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { Copyright } from './CopyRight'
+import { useNavigate } from 'react-router-dom'
 
 const defaultTheme = createTheme({
     typography: {
@@ -69,6 +69,10 @@ const defaultTheme = createTheme({
 
 export default function SignInSide() {
     const navigate = useNavigate()
+
+    const handleSubmit = () => {
+        navigate('/home')
+    }
 
     return (
         <ThemeProvider theme={defaultTheme}>

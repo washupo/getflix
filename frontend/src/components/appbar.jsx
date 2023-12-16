@@ -7,29 +7,14 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import Avatar from '@mui/material/Avatar'
 import Tooltip from '@mui/material/Tooltip'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import MyComponent from './catButton'
 
-const pages = ['Menu']
-const settings = ['Profile', 'Logout']
-
 function ResponsiveAppBar() {
-    const [anchorElNav, setAnchorElNav] = useState(null)
-    const [anchorElUser, setAnchorElUser] = useState(null)
+    const navigate = useNavigate()
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget)
-    }
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget)
-    }
-
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null)
-    }
-
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null)
+    const onClickSettings = () => {
+        navigate('/parametres')
     }
 
     return (
@@ -63,10 +48,7 @@ function ResponsiveAppBar() {
                     />
                     <Box sx={{ flexGrow: 0, marginLeft: 'auto' }}>
                         <Tooltip title="Open settings">
-                            <IconButton
-                                onClick={handleOpenUserMenu}
-                                sx={{ p: 0 }}
-                            >
+                            <IconButton onClick={onClickSettings} sx={{ p: 0 }}>
                                 <Avatar alt="User" src="......" />
                             </IconButton>
                         </Tooltip>
