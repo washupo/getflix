@@ -62,46 +62,6 @@ const options = {
 
 const server = http.createServer(options, app);
 
-// //const app = express();
-// const fetch = require('node-fetch');
-
-// // Fetch popular movies from TMDB
-// const fetchMovies = async (page = 1) => {
-//   try {
-//     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.MOVIE_DB_API_KEY}&page=${page}`;
-//     const options = {
-//       method: 'GET',
-//       headers: {
-//         accept: 'application/json',
-//         Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODlmMzQ2NDlmMDBlMTMxYzBkYzAxYTkwMjhkYjY4ZCIsInN1YiI6IjY1NzA4NTllNzlhMWMzMDBlMThlN2U2ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6WbmzdN4CKbAjO7tpCS9dGmrmy2stUwRFDmxaPW1MbA' // Remplace par ton jeton JWT
-//       }
-//     };
-
-//     const response = await fetch(url, options);
-//     const data = await response.json();
-//     return data.results;
-//   } catch (error) {
-//     console.error(error);
-//     return [];
-//   }
-// };
-
-// // Routes
-// app.get('/movies', async (req, res, next) => {
-//   try {
-//     const { page } = req.query;
-//     const data = await fetchMovies(page);
-
-//     return res.status(200).json({
-//       status: 200,
-//       message: `${data.length} movies found`,
-//       data,
-//     });
-//   } catch (err) {
-//     return next(err);
-//   }
-// });
-
 
 // Importing the development support form utils/development.js
 const { printConsole } = require("./utils/development");
