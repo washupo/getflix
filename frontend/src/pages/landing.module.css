@@ -28,7 +28,7 @@
 }
 
 .section1 {
-    height: 500px;
+    height: 100vh;
     display: flex;
     justify-content: center;
     background-color: rgb(246, 97, 176);
@@ -39,15 +39,21 @@
 
 .section2 {
     /* déplacer vers la gauche l'image */
-    height: 500px;
+    height: 100vh;
     display: flex;
     justify-content: center;
     background-color: rgb(6, 6, 6);
     color: white;
 }
 
+.section2 img {
+    width: 50%;
+    margin-left: -100px;
+    object-fit: cover;
+}
+
 .section3 {
-    height: 500px;
+    height: 100vh;
     display: flex;
     justify-content: center;
     background-color: rgb(71, 28, 51);
