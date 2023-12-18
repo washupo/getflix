@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
-import Link from '@mui/material/Link'
+import { Link } from 'react-router-dom'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
@@ -142,6 +142,8 @@ export default function SignUp() {
                                 />
                             </Grid>
                         </Grid>
+
+                        <Link to="/home"> 
                         <Button
                             type="submit"
                             fullWidth
@@ -149,7 +151,6 @@ export default function SignUp() {
                             sx={{
                                 mt: 3,
                                 mb: 2,
-
                                 bgcolor: 'black',
                                 color: '#FFB6C1', // Rose clair
                                 width: '50%',
@@ -160,6 +161,7 @@ export default function SignUp() {
                         >
                             Sign Up
                         </Button>
+                        </Link>
                     </form>
 
                     <Link

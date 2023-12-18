@@ -32,7 +32,7 @@ app.use(
 require("./routes/movies")(
   app.use(
     cors({
-      origin: "http://localhost:5173", // Update with your React app's URL
+      origin: "https://chillhome-znov.onrender.com", // Update with your React app's URL
       credentials: true, // Enable credentials (cookies)
       methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
       allowedHeaders: "Content-Type, Authorization",
