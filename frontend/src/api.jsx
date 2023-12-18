@@ -12,10 +12,10 @@ export const fetchGenres = (setGenres) => {
             console.error('Erreur de recherche:', error)
         })
 }
-export const fetchMoviesByGenre = (search, setGenre) => {
-    const categoryId = search.split('=')[1]
+export const fetchMoviesByGenre = (categoryQuery, setGenre) => {
+    const categoryId = categoryQuery.split('=')[1]
     return axios
-        .get(`${VITE_API_URL}/search?categoryId=${categoryId}`)
+        .get(`${VITE_API_URL}/genre?categoryId=${categoryId}`)
         .then(function (response) {
             setGenre(response.data.data)
         })

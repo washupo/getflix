@@ -27,7 +27,7 @@ function ResponsiveAppBar() {
         >
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <Link to="/">
+                    <Link to="/home">
                         <img height="100%" width="70px" src={logo} alt="Logo" />
                     </Link>
                     <CategoryButton />

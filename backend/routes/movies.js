@@ -13,10 +13,10 @@ const cors = require("cors");
     }
   };
 
-const fetchMoviesByGenre = async (category) => {
+const fetchMoviesByGenre = async (id) => {
   try {
     const response = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?api_key=189f34649f00e131c0dc01a9028db68d&language=en-US&sort_by=release_date.desc&page=1&with_genres=${category}`
+      `https://api.themoviedb.org/3/discover/movie?api_key=189f34649f00e131c0dc01a9028db68d&with_genres=${id}`
     );
     const data = await response.json();
     return data.results;

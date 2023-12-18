@@ -25,14 +25,25 @@ const CategoryPage = () => {
                         ? genres.map((item) => (
                               <ImageListItem key={item.id}>
                                   <Link to={`/fiche/${item.id}`}>
-                                      <img
-                                          height="300px"
-                                          key={item.id}
-                                          srcSet={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                                          src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                                          alt={item.title}
-                                          loading="lazy"
-                                      />
+                                      {item.poster_path ? (
+                                          <img
+                                              height="300px"
+                                              key={item.id}
+                                              srcSet={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                                              src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                                              alt={item.title}
+                                              loading="lazy"
+                                          />
+                                      ) : (
+                                          <img
+                                              height="300px"
+                                              key={item.id}
+                                              srcSet={`https://placekitten.com/200/300`}
+                                              src={`https://placekitten.com/200/300`}
+                                              alt={item.title}
+                                              loading="lazy"
+                                          />
+                                      )}
                                   </Link>
                               </ImageListItem>
                           ))
