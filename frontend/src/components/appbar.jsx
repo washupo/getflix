@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -9,6 +9,7 @@ import Avatar from '@mui/material/Avatar'
 import Tooltip from '@mui/material/Tooltip'
 import { Link, useNavigate } from 'react-router-dom'
 import CategoryButton from './catButton'
+import logo from '../../assets/chill.png'
 
 function ResponsiveAppBar() {
     const navigate = useNavigate()
@@ -27,12 +28,7 @@ function ResponsiveAppBar() {
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Link to="/">
-                        <img
-                            height="100%"
-                            width="70px"
-                            src="../assets/chill.png"
-                            alt="Logo"
-                        />
+                        <img height="100%" width="70px" src={logo} alt="Logo" />
                     </Link>
                     <CategoryButton />
                     <Typography
