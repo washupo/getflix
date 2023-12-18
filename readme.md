@@ -17,7 +17,7 @@ In this exercise we create a Streaming site (in html / css, javascript and Node.
 
 ### 🍿 Features 
 
-- Search and watch movies: users can search for movies by title and can watch them easily
+- Search and watch movies trailers: users can search for movies by title and can watch the trailer easily
 - Genre-wise display: movies can be sorted by genre
 - Trending Movies: displays a section for trending movies
 - Upcoming movies: displays a section for upcoming movies
@@ -27,9 +27,15 @@ In this exercise we create a Streaming site (in html / css, javascript and Node.
 
 # 🍿 Demo 
 
-- Check out our live demo at https://.....
+##  Check out our live demo at https://chillhome-znov.onrender.com
 
-https://github.com/.............
+<img src="https://github.com/washupo/getflix/assets/133639183/87f3f7d5-93fc-458c-b12a-f23dd06d9af8" width="200" height="100">
+<img src="https://github.com/washupo/getflix/assets/133639183/c56c1d85-0394-4d38-8340-cb0286858c1d" width="200" height="100">
+<img src="https://github.com/washupo/getflix/assets/133639183/5ce744b5-5bc2-4e55-a303-2b70e68ec6ad" width="200" height="100">
+<img src="https://github.com/washupo/getflix/assets/133639183/aaf16ba9-1980-4160-8cb9-fb5befdc7f90" width="200" height="100">
+<img src="https://github.com/washupo/getflix/assets/133639183/918c41a3-7823-45f9-a366-56b80426447c" width="200" height="100">
+<img src="https://github.com/washupo/getflix/assets/133639183/c1302e6f-e9ee-423e-b79d-5a8a8c2befd1" width="200" height="100">
+<img src="https://github.com/washupo/getflix/assets/133639183/08ac1762-35e2-4549-929e-1e0d804a13fc" width="200" height="100">
 
 
 > ## 🍿 Technology
@@ -39,24 +45,8 @@ The website is built using the following technologies:
 - ReactJS
 - TMDB API
 - Node Js
-- Tailwind
+- Mui
 - Vite
-
->> #### React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-Entrez les programmes/logiciels/ressources que vous avez utilisé pour développer votre projet
-
-_exemples :_
-* [Materialize.css](http://materializecss.com) - Framework CSS (front-end)
-* [Atom](https://atom.io/) - Editeur de textes
-
->> #### Node JS
 
 >> #### API
 
@@ -64,42 +54,56 @@ We used the [TMDB API](https://developer.themoviedb.org/reference/intro/getting-
 
 <hr/>
 
-# Versions
-Listez les versions ici 
-_exemple :_
-**Dernière version stable :** 5.0
-**Dernière version :** 5.1
-Liste des versions : [Cliquer pour afficher](https://github.com/your/project-name/tags)
-_(pour le lien mettez simplement l'URL de votre projets suivi de ``/tags``)_
-
-<hr/>
-
 # 🍿 How to Run the Website on Your System:
 
-Entrez ici les instructions pour bien débuter avec votre projet...
+1. Clone this repository to your local machine:
 
-### Pré-requis
+   ```bash
+   git clone https://github.com/washupo/getflix.git
+   ```
 
-Ce qu'il est requis pour commencer avec votre projet...
+2. Install project dependencies:
 
-- Programme 1
-- Programme 2
-- etc...
+   ```bash
+   cd frontend && npm install && cd ../backend && npm install
+   ```
+3. Environment variables: create a .env file for both frontend and backend
 
-### Installation
+   ```bash
+   touch backend/.env
+   touch frontend/.env
+   ```
 
-Les étapes pour installer votre programme....
+   In the backend .env, you need
+      ```bash
+        MOVIE_DB_API_KEY=<your key>
+        MONGO_REMOTE_URL=<your url>
+        PORT=8000
+        EXPRESS_ENV=development
+        VITE_ORIGIN=*
+    ```
+   In the frontend .env, you need
+      ```bash
+        VITE_API_URL=http://localhost:8000
+    ```
 
-Dites ce qu'il faut faire...
+Note that the VITE_API_URL must match the PORT value
 
-_exemple_: Executez la commande ``telnet mapscii.me`` pour commencer ensuite [...]
+## Running the App
 
+Once the installation is complete, you can run the app locally with the following commands:
 
-Ensuite vous pouvez montrer ce que vous obtenez au final...
+Start the backend, depending on your current working directory, e.g. /
 
-## Démarrage
+```bash
+cd backend && node server.js
+```
+Start the frontend, depending on your current working directory, e.g. /
 
-Dites comment faire pour lancer votre projet
-## License
+```bash
+cd frontend && npm run dev
+```
 
-Ce projet est sous licence ``exemple: WTFTPL`` - voir le fichier [LICENSE.md](LICENSE.md) pour plus d'informations
+This command starts the development server, and you can view your app by navigating to [http://localhost:5173](http://localhost:5173) in your browser.
+
+Ce projet est sous licence ``MIT``
