@@ -82,7 +82,15 @@ export default function SignInSide() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" item xs={0} sm={0} md={12} sx={{ height: '0vh', width: '60%', justifyContent: 'center', mt: 15, mb: 5, mr: 15, ml: 40, bgcolor: 'black' }}>
+      <Grid container component="main" item xs={0} sm={0} md={12} sx={{  justifyContent: 'center', mt: 12, mb: 5, mr: 0, ml: 0, bgcolor: 'black','@media (min-width:600px)': {
+        mt: 15,
+        mb: 5,
+        mr: 15,
+        ml: 40,
+        height: '0vh',
+        width: '60%',
+      },
+     }}>
 
         <CssBaseline />
         <Grid
@@ -101,7 +109,7 @@ export default function SignInSide() {
             justifyContent: 'center',
           }}
         >
-          
+          {/* Vous pouvez ajouter du contenu ici si nécessaire */}
         </Grid>
         <Grid item xs={0} sm={0} md={5} component={Paper} elevation={6} square>
 
@@ -111,7 +119,7 @@ export default function SignInSide() {
               flexDirection: 'column',
               alignItems: 'center',
               bgcolor: '#9A1665',
-              color: '#FFB6C1', 
+              color: '#FFB6C1', // Rose clair
               padding: '30',
               boxShadow: '2px 4px 10px rgba(2, 4, 6, 0.1)',
             }}
