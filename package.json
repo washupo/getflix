@@ -1,0 +1,17 @@
+{
+  "name": "getflix",
+  "version": "1.0.0",
+  "description": "[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)  [![forthebadge](http://forthebadge.com/images/badges/powered-by-electricity.svg)](http://forthebadge.com)\r This project was a challenge by team of four during our training at beCode in Bruxelles.\r In this exercise we create a Streaming site (in html / css, javascript and Node.js) inspired by Netflix, Amazon Prime Video and other Popcorn Time, Stremio ... The goal is to display a catalog of movies. Spot the similarities between these platforms (navbar, header, search tool, different categories of videos…).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-server": "cd backend && npm install",
+    "start-server": "cd backend && node app.js",
+    "install-client": "cd frontend && npm install",
+    "build-client": "cd frontend && npm run build",
+    "start-client": "cd frontend && npm run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
