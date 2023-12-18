@@ -1,64 +1,68 @@
-import React from 'react'
-import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
-import Button from '@mui/material/Button'
-// import Box from '@mui/material/Box'
-
-const ITEM_HEIGHT = 48
-const ITEM_PADDING_TOP = 8
+import React, { useState, useEffect } from 'react';
+import { Button, Menu, MenuItem } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const MyComponent = () => {
-    const MenuProps = {
-        margin: 'auto',
-        PaperProps: {
-            style: {
-                maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-                width: 250,
-            },
-        },
+  const navigate = useNavigate();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [genres, setGenres] = useState([]);
+
+  useEffect(() => {
+    fetchGenres();
+  }, []);
+
+  const fetchGenres = async () => {
+    try {
+      const response = await fetch(
+        'https://api.themoviedb.org/3/genre/movie/list?api_key=189f34649f00e131c0dc01a9028db68d&language=en-US'
+      );
+      const data = await response.json();
+      setGenres(data.genres);
+    } catch (error) {
+      console.error('Error fetching genres:', error);
     }
+  };
 
-    const [anchorEl, setAnchorEl] = React.useState(null)
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget)
-    }
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-    const handleClose = () => {
-        setAnchorEl(null)
-    }
+  const handleCategorySelect = (categoryId) => {
+    handleClose();
+    // Naviguer vers la page des films avec le genre sélectionné
+    navigate(`/categorypage?category=${categoryId}`);
+  };
 
-    return (
-        <div>
-                <Button
-                    displayFlex="center"
-                    color="secondary"
-                    onClick={handleClick}
-                >
-                    Films par Catégorie
-                </Button>
+  return (
+    <div>
+      <Button
+        id="category-button"
+        aria-controls="category-menu"
+        aria-haspopup="true"
+        onClick={handleClick}
+        variant="contained"
+      >
+        Categories
+      </Button>
+      <Menu
+        id="category-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        {genres.map((genre) => (
+          <MenuItem key={genre.id} onClick={() => handleCategorySelect(genre.id)}>
+            {genre.name}
+          </MenuItem>
+        ))}
+      </Menu>
+    </div>
+  );
+};
 
-                <Menu
-                    id="long-menu"
-                    anchorEl={anchorEl}
-                    keepMounted
-                    open={Boolean(anchorEl)}
-                    onClose={handleClose}
-                    MenuProps={MenuProps}
-                >
-                    <MenuItem onClick={handleClose}>Romance</MenuItem>
-                    <MenuItem onClick={handleClose}>Action </MenuItem>
-                    <MenuItem onClick={handleClose}>Comédie</MenuItem>
-                </Menu>
-        </div>
-    )
-}
-
-export default MyComponent
-
-
-// commment centrer le bouton catégories??? :
-//  <Box
-//                 sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}
-//             >
-//                  </Box>
+export default MyComponent;
