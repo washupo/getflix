@@ -8,10 +8,54 @@
     width: 350px;
     display: flex;
     justify-content: space-between;
-
+    background-color: black;
 }
 
 .actionButton {
     display: block;
     width: 48%;
+    background-color: black;
+}
+
+
+.section0 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    height: 100vh;
+}
+
+.section1 {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(243, 180, 213);
+    color: white;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.section2 {
+    /* déplacer vers la gauche l'image */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(6, 6, 6);
+    color: white;
+}
+
+.section2 img {
+    width: 50%;
+    margin-left: -100px;
+    object-fit: cover;
+}
+
+.section3 {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(71, 28, 51);
+    color: white;
 }
