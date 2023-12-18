@@ -18,7 +18,12 @@ function ResponsiveAppBar() {
     }
 
     return (
-        <AppBar position="static">
+        <AppBar
+            sx={{
+                backgroundColor: 'black',
+            }}
+            position="static"
+        >
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Link to="/">
@@ -28,6 +33,7 @@ function ResponsiveAppBar() {
                             src="../assets/chill.png"
                             alt="Logo"
                         />
+
                     </Link>
                     <MyComponent />
                     <Typography
