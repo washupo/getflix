@@ -4,20 +4,13 @@ import Searchbar from '../components/search'
 import { Link } from 'react-router-dom'
 
 import styles from './home.module.css'
+import { fetchMovies } from '../api'
 
 function MoviePage() {
     const [movieList, setMovieList] = useState([])
 
-    const getMovie = () => {
-        fetch(
-            'https://api.themoviedb.org/3/discover/movie?api_key=189f34649f00e131c0dc01a9028db68d'
-        )
-            .then((res) => res.json())
-            .then((json) => setMovieList(json.results))
-    }
-
     useEffect(() => {
-        getMovie()
+        fetchMovies(setMovieList)
     }, [])
 
     return (

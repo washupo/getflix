@@ -1,6 +1,28 @@
 const fetch = require("node-fetch");
 const cors = require("cors");
 
+// Search
+const searchMovies = async (searchword) => {
+  try {
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_DB_API_KEY}&query=${searchword}`;
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODlmMzQ2NDlmMDBlMTMxYzBkYzAxYTkwMjhkYjY4ZCIsInN1YiI6IjY1NzA4NTllNzlhMWMzMDBlMThlN2U2ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6WbmzdN4CKbAjO7tpCS9dGmrmy2stUwRFDmxaPW1MbA", // Remplace par ton jeton JWT
+      },
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
+
 // Fetch popular movies from TMDB
 const fetchMovies = async (page = 1) => {
   try {
@@ -116,6 +138,24 @@ module.exports = function (app) {
       try {
         const { page } = req.query;
         const data = await fetchMovies(page);
+
+        return res.status(200).json({
+          status: 200,
+          message: `${data.length} movies found`,
+          data,
+        });
+      } catch (err) {
+        return next(err);
+      }
+    },
+    cors(corsOptions)
+  );
+  app.get(
+    "/search",
+    async (req, res, next) => {
+      try {
+        const { title } = req.query;
+        const data = await searchMovies(title);
 
         return res.status(200).json({
           status: 200,

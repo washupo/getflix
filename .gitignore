@@ -41,5 +41,4 @@ build
 .env.production.local
 
 .vite
-package.json
 package-lock.json

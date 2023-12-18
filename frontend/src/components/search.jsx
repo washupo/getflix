@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import React from 'react'
 import { styled, alpha } from '@mui/material/styles'
 import InputBase from '@mui/material/InputBase'
+import { searchMovies } from '../api'
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -45,30 +45,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Searchbar = (props) => {
     const { updateMovies } = props
-    const [error, setError] = useState('')
 
     const handleSearchChange = (event) => {
         const searchWord = event.target.value
         if (searchWord.trim() !== '') {
-            axios
-                .get(
-                    `https://api.themoviedb.org/3/search/movie?api_key=${MOVIE_DB_API_KEY}&query=${searchWord}`
-                )
-                .then((response) => {
-                    if (response.data && response.data.results) {
-                        const movies = response.data.results
-                        updateMovies(movies)
-                    } else {
-                        console.error('Aucune suggestion trouvée.')
-                        updateMovies([])
-                        setError(error)
-                    }
-                })
-                .catch((error) => {
-                    console.error('Erreur de recherche:', error)
-                    updateMovies([])
-                    setError(error)
-                })
+            searchMovies(searchWord, updateMovies)
         } else {
             updateMovies([]) // Si la recherche est vide, réinitialise les suggestions
         }
@@ -88,8 +69,6 @@ const Searchbar = (props) => {
                     background: '#2c2c2c',
                 }} // Ajout de la largeur fixe à la barre de recherche
             />
-
-            <div>{error && <div style={{ color: 'red' }}>{error}</div>}</div>
         </Search>
     )
 }

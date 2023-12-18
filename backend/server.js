@@ -19,26 +19,26 @@ connectToDB();
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
+app.use(
+  cors({
+    origin: "*", // Update with your React app's URL
+    credentials: true, // Enable credentials (cookies)
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    allowedHeaders: "Content-Type, Authorization",
+  })
+);
+
+//Initalizing the express app
+require("./routes/movies")(
   app.use(
     cors({
-      origin: '*', // Update with your React app's URL
+      origin: "http://localhost:5173", // Update with your React app's URL
       credentials: true, // Enable credentials (cookies)
       methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
       allowedHeaders: "Content-Type, Authorization",
     })
   )
-
-// //Initalizing the express app
-// require("./routes/movies")(
-//   app.use(
-//     cors({
-//       origin: "http://localhost:5173", // Update with your React app's URL
-//       credentials: true, // Enable credentials (cookies)
-//       methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-//       allowedHeaders: "Content-Type, Authorization",
-//     })
-//   )
-// );
+);
 
 // Middleware pour parser les cookies
 app.use(cookieParser());
@@ -62,7 +62,6 @@ const options = {
 
 const server = http.createServer(options, app);
 
-
 // Importing the development support form utils/development.js
 const { printConsole } = require("./utils/development");
 
@@ -77,12 +76,12 @@ const PORT = process.env.PORT || 8000;
 //Listing to the app and running it on PORT 8000
 server.listen(PORT, async () => {
   printConsole(
-      { data: `Server is live @${PORT}` },
-      { printLocation: "index.js:28" },
-      {
-          bgColor: "bgGreen",
-          textColor: "black",
-          underline: true,
-      }
-  )
-})
+    { data: `Server is live @${PORT}` },
+    { printLocation: "index.js:28" },
+    {
+      bgColor: "bgGreen",
+      textColor: "black",
+      underline: true,
+    }
+  );
+});
