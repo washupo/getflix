@@ -12,8 +12,7 @@ const Landing = () => {
             <div>
                 <div className={style.section0}>
                     <img src={logo} />
-                </div>
-                <div className={style.layout}>
+                    <div className={style.layout}>
                     <div className={style.actions}>
                         <Link className={style.actionButton} to="/login">
                             <Button
@@ -33,6 +32,8 @@ const Landing = () => {
                         </Link>
                     </div>
                 </div>
+                </div>
+                
 
                 <div className={style.section1}>
                     <h2>Revoir ...</h2>
