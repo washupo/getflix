@@ -26,9 +26,9 @@ const fetchMoviesByGenre = async (category) => {
 };
 
 // Search
-const searchMovies = async (category) => {
+const searchMovies = async (title) => {
   try {
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_DB_API_KEY}&query=${category}`;
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_DB_API_KEY}&query=${title}`;
     const options = {
       method: "GET",
       headers: {
@@ -177,8 +177,8 @@ module.exports = function (app) {
     "/search",
     async (req, res, next) => {
       try {
-        const { categoryId } = req.query;
-        const data = await searchMovies(categoryId);
+        const { title } = req.query;
+        const data = await searchMovies(title);
 
         return res.status(200).json({
           status: 200,
