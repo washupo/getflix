@@ -75,7 +75,8 @@ export default function SignInSide() {
 
         // Extract form data from the event
         const data = new FormData(event.currentTarget);
-
+      
+      
         try {
             const response = await fetch('https://localhost:8000/api/auth/login', {
                 method: 'POST',
@@ -96,6 +97,61 @@ export default function SignInSide() {
             const result = await response.json();
             const { token, userId } = result;
 
+
+
+  return (
+    <ThemeProvider theme={defaultTheme}>
+      <Grid container component="main" item xs={0} sm={0} md={12} sx={{  justifyContent: 'center', mt: 12, mb: 5, mr: 0, ml: 0, bgcolor: 'black','@media (min-width:600px)': {
+        mt: 15,
+        mb: 5,
+        mr: 15,
+        ml: 40,
+        height: '0vh',
+        width: '60%',
+      },
+     }}>
+
+        <CssBaseline />
+        <Grid
+          item
+          xs={0}
+          sm={4}
+          md={7}
+          sx={{
+            backgroundImage: 'url(https://pics.craiyon.com/2023-09-14/6bb75488481c43bfb4590dfbcf35c96d.webp)',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: (t) => t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          {/* Vous pouvez ajouter du contenu ici si nécessaire */}
+        </Grid>
+        <Grid item xs={0} sm={0} md={5} component={Paper} elevation={6} square>
+
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              bgcolor: '#9A1665',
+              color: '#FFB6C1', // Rose clair
+              padding: '30',
+              boxShadow: '2px 4px 10px rgba(2, 4, 6, 0.1)',
+            }}
+          >
+            <Avatar sx={{ m: 1, bgcolor: 'black' }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5" >
+              Sign in
+            </Typography>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1, margin: 4, }}>
+
+
             // Save token and userId to local storage
             localStorage.setItem('token', token);
             localStorage.setItem('userId', userId);
@@ -108,6 +164,9 @@ export default function SignInSide() {
         }
     }
 
+    
+    
+    //à verifier es peut etre en double //
     return (
         <ThemeProvider theme={defaultTheme}>
             <Grid
