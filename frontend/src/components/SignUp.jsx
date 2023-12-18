@@ -142,8 +142,8 @@ export default function SignUp() {
                                 />
                             </Grid>
                         </Grid>
-                        <Link to="/login"> 
 
+                        <Link to="/home"> 
                         <Button
                             type="submit"
                             fullWidth
@@ -151,7 +151,6 @@ export default function SignUp() {
                             sx={{
                                 mt: 3,
                                 mb: 2,
-
                                 bgcolor: 'black',
                                 color: '#FFB6C1', // Rose clair
                                 width: '50%',

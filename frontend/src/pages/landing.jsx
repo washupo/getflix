@@ -35,7 +35,7 @@ const Landing = () => {
                 </div>
                 
 
-                <div className={style.section1}>
+                {/* <div className={style.section1}>
                     <h2>Revoir ...</h2>
                 </div>
                 <div className={style.section2}>
@@ -46,7 +46,7 @@ const Landing = () => {
                 </div>
                 <div className={style.section3}>
                     <h2>Revoir ...</h2>
-                </div>
+                </div> */}
             </div>
             <Footer />
         </>
