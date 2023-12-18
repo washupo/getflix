@@ -19,9 +19,11 @@ connectToDB();
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
+const origin = process.env.VITE_ORIGIN;
+
 app.use(
   cors({
-    origin: "*", // Update with your React app's URL
+    origin, // Update with your React app's URL
     credentials: true, // Enable credentials (cookies)
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     allowedHeaders: "Content-Type, Authorization",
@@ -32,7 +34,7 @@ app.use(
 require("./routes/movies")(
   app.use(
     cors({
-      origin: "https://chillhome-znov.onrender.com", // Update with your React app's URL
+      origin, // Update with your React app's URL
       credentials: true, // Enable credentials (cookies)
       methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
       allowedHeaders: "Content-Type, Authorization",
