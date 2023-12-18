@@ -19,6 +19,8 @@ import Fiche from './pages/fiche.jsx'
 import Home from './pages/home.jsx'
 import Footer from './components/footer.jsx'
 
+import './styles/styles.css'
+
 const theme = createTheme({
     palette: {
         primary: {

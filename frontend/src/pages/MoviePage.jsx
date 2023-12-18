@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import Searchbar from '../components/search'
 import { Link } from 'react-router-dom'
 
+import styles from './home.module.css'
+
 function MoviePage() {
     const [movieList, setMovieList] = useState([])
 
@@ -19,7 +21,7 @@ function MoviePage() {
     }, [])
 
     return (
-        <div>
+        <div className={styles.container}>
             <Searchbar updateMovies={setMovieList} />
 
             <Container
