@@ -50,9 +50,7 @@ const Searchbar = (props) => {
         const searchWord = event.target.value
         if (searchWord.trim() !== '') {
             searchMovies(searchWord, updateMovies)
-        } else {
-            updateMovies([]) // Si la recherche est vide, réinitialise les suggestions
-        }
+        } 
     }
 
     return (
