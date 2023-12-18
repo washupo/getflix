@@ -1,10 +1,34 @@
 const fetch = require("node-fetch");
 const cors = require("cors");
 
-// Search
-const searchMovies = async (searchword) => {
+  const fetchGenres = async () => {
+    try {
+      const response = await fetch(
+        'https://api.themoviedb.org/3/genre/movie/list?api_key=189f34649f00e131c0dc01a9028db68d&language=en-US'
+      );
+      const data = await response.json();
+    return data.genres;
+    } catch (error) {
+      console.error('Error fetching genres:', error);
+    }
+  };
+
+const fetchMoviesByGenre = async (category) => {
   try {
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_DB_API_KEY}&query=${searchword}`;
+    const response = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?api_key=189f34649f00e131c0dc01a9028db68d&language=en-US&sort_by=release_date.desc&page=1&with_genres=${category}`
+    );
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching movies:', error);
+  }
+};
+
+// Search
+const searchMovies = async (category) => {
+  try {
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_DB_API_KEY}&query=${category}`;
     const options = {
       method: "GET",
       headers: {
@@ -131,7 +155,6 @@ module.exports = function (app) {
     },
     cors(corsOptions)
   );
-  // Routes
   app.get(
     "/movies",
     async (req, res, next) => {
@@ -154,8 +177,43 @@ module.exports = function (app) {
     "/search",
     async (req, res, next) => {
       try {
-        const { title } = req.query;
-        const data = await searchMovies(title);
+        const { categoryId } = req.query;
+        const data = await searchMovies(categoryId);
+
+        return res.status(200).json({
+          status: 200,
+          message: `${data.length} movies found`,
+          data,
+        });
+      } catch (err) {
+        return next(err);
+      }
+    },
+    cors(corsOptions)
+  );
+  app.get(
+    "/genres",
+    async (req, res, next) => {
+      try {
+        const data = await fetchGenres();
+
+        return res.status(200).json({
+          status: 200,
+          message: `${data.length} movies found`,
+          data,
+        });
+      } catch (err) {
+        return next(err);
+      }
+    },
+    cors(corsOptions)
+  );
+  app.get(
+    "/genre",
+    async (req, res, next) => {
+      try {
+        const { categoryId } = req.query;
+        const data = await fetchMoviesByGenre(categoryId);
 
         return res.status(200).json({
           status: 200,

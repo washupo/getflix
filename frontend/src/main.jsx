@@ -17,9 +17,9 @@ import Parametres from './pages/parametres.jsx'
 
 import Fiche from './pages/fiche.jsx'
 import Home from './pages/home.jsx'
-import Footer from './components/footer.jsx'
 
 import './styles/styles.css'
+import CategoryPage from './pages/CategoryPage.jsx'
 
 const theme = createTheme({
     palette: {
@@ -64,6 +64,14 @@ const router = createBrowserRouter([
                 element: (
                     <Layout>
                         <Home />
+                    </Layout>
+                ),
+            },
+            {
+                path: '/categorypage',
+                element: (
+                    <Layout>
+                        <CategoryPage />
                     </Layout>
                 ),
             },

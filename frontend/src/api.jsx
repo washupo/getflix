@@ -2,6 +2,28 @@ import axios from 'axios'
 
 const { VITE_API_URL } = import.meta.env
 
+export const fetchGenres = (setGenres) => {
+    return axios
+        .get(`${VITE_API_URL}/genres`)
+        .then(function (response) {
+            setGenres(response.data.data)
+        })
+        .catch((error) => {
+            console.error('Erreur de recherche:', error)
+        })
+}
+export const fetchMoviesByGenre = (search, setGenre) => {
+    const categoryId = search.split('=')[1]
+    return axios
+        .get(`${VITE_API_URL}/search?categoryId=${categoryId}`)
+        .then(function (response) {
+            setGenre(response.data.data)
+        })
+        .catch((error) => {
+            console.error('Erreur de recherche:', error)
+        })
+}
+
 export const searchMovies = (searchWord, setMovie) => {
     return axios
         .get(`${VITE_API_URL}/search?title=${searchWord}`)

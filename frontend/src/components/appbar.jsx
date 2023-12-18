@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -8,7 +8,7 @@ import Container from '@mui/material/Container'
 import Avatar from '@mui/material/Avatar'
 import Tooltip from '@mui/material/Tooltip'
 import { Link, useNavigate } from 'react-router-dom'
-import MyComponent from './catButton'
+import CategoryButton from './catButton'
 
 function ResponsiveAppBar() {
     const navigate = useNavigate()
@@ -33,9 +33,8 @@ function ResponsiveAppBar() {
                             src="../assets/chill.png"
                             alt="Logo"
                         />
-
                     </Link>
-                    <MyComponent />
+                    <CategoryButton />
                     <Typography
                         variant="h6"
                         noWrap
