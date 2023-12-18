@@ -70,8 +70,42 @@ const defaultTheme = createTheme({
 export default function SignInSide() {
     const navigate = useNavigate()
 
-    const handleSubmit = () => {
-        navigate('/home')
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        // Extract form data from the event
+        const data = new FormData(event.currentTarget);
+
+        try {
+            const response = await fetch('https://localhost:8000/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: data.get('email'),
+                    password: data.get('password'),
+                }),
+                credentials: 'include', // include credentials in the request
+            });
+
+            if (!response.ok) {
+                throw new Error('Login failed');
+            }
+
+            const result = await response.json();
+            const { token, userId } = result;
+
+            // Save token and userId to local storage
+            localStorage.setItem('token', token);
+            localStorage.setItem('userId', userId);
+
+            // Redirect to '/home'
+            navigate('/home');
+
+        } catch (error) {
+            console.error('Error during authentication:', error.message);
+        }
     }
 
     return (
