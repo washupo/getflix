@@ -23,6 +23,7 @@ const defaultTheme = createTheme({
             styleOverrides: `
         body {
           color: #FFB6C1; 
+          background-color: #000000;
         }
       `,
         },
@@ -68,7 +69,7 @@ const defaultTheme = createTheme({
 })
 
 export default function SignInSide() {
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -76,59 +77,43 @@ export default function SignInSide() {
         // Extract form data from the event
         const data = new FormData(event.currentTarget);
 
-        try {
-            const response = await fetch('https://localhost:8000/api/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email: data.get('email'),
-                    password: data.get('password'),
-                }),
-                credentials: 'include', // include credentials in the request
-            });
 
-            if (!response.ok) {
-                throw new Error('Login failed');
-            }
+        // try {
+        //     const response = await fetch('https://localhost:8000/api/auth/login', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify({
+        //             email: data.get('email'),
+        //             password: data.get('password'),
+        //         }),
+        //         credentials: 'include', // include credentials in the request
+        //     });
 
-            const result = await response.json();
-            const { token, userId } = result;
+        //     if (!response.ok) {
+        //         throw new Error('Login failed');
+        //     }
 
-            // Save token and userId to local storage
-            localStorage.setItem('token', token);
-            localStorage.setItem('userId', userId);
+        //     const result = await response.json();
+        //     const { token, userId } = result;
 
-            // Redirect to '/home'
-            navigate('/home');
-
-        } catch (error) {
-            console.error('Error during authentication:', error.message);
-        }
     }
 
     return (
         <ThemeProvider theme={defaultTheme}>
-            <Grid
-                container
-                component="main"
-                item
-                xs={0}
-                sm={0}
-                md={12}
-                sx={{
-                    height: '0vh',
-                    width: '60%',
-                    justifyContent: 'center',
+            <Grid sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <Grid container component="main" item xs={0} sm={0} md={12} sx={{
+                justifyContent: 'center', mt: 12, mb: 5, mr: 0, ml: 0,  '@media (min-width:600px)': {
                     mt: 15,
                     mb: 5,
-                    mr: 15,
-                    ml: 40,
-                    bgcolor: 'black',
-                }}
-            >
+                    mx: 20,
+                    height: '0vh',
+                    width: '60%',
+                },
+            }}>
                 <CssBaseline />
+
                 <Grid
                     item
                     xs={0}
@@ -148,7 +133,12 @@ export default function SignInSide() {
                         alignItems: 'center',
                         justifyContent: 'center',
                     }}
-                ></Grid>
+                >
+        {/* Vous pouvez ajouter du contenu ici si nécessaire */}
+
+                </Grid>
+
+
                 <Grid
                     item
                     xs={0}
@@ -158,6 +148,7 @@ export default function SignInSide() {
                     elevation={6}
                     square
                 >
+
                     <Box
                         sx={{
                             display: 'flex',
@@ -244,6 +235,8 @@ export default function SignInSide() {
                     </Box>
                 </Grid>
             </Grid>
+            </Grid>
+           
         </ThemeProvider>
     )
 }
