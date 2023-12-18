@@ -1,0 +1,14 @@
+/* example.module.css */
+.readMore {
+    display: flex;
+    justify-content: center;
+}
+
+.titre {
+    margin: 1 rem;
+    padding: 0 rem;
+    font-size: 1.5rem;
+    background-repeat: repeat;
+    background-size: "cover";
+    background-color: #F6CDEA;
+}
