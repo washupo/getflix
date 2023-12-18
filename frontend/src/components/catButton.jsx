@@ -33,7 +33,9 @@ const CategoryButton = () => {
                 aria-controls="category-menu"
                 aria-haspopup="true"
                 onClick={handleClick}
-                variant="contained"
+                variant="text"
+                size="large"
+                color="secondary"
             >
                 Categories
             </Button>
