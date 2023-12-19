@@ -3,7 +3,8 @@ import logo from '../../assets/chill.png'
 import style from './landing.module.css'
 import { Link } from 'react-router-dom'
 import { Button } from '@mui/material'
-import imageL1 from '../../assets/famille.jpg'
+import imageL1 from '../../assets/paysage1.png'
+
 import Footer from '../components/footer'
 
 const Landing = () => {
@@ -37,14 +38,14 @@ const Landing = () => {
 
                 {/* <div className={style.section1}>
                     <h2>Revoir ...</h2>
-                </div>
+                </div> */}
                 <div className={style.section2}>
                     <img src={imageL1} />
-                    <h2>
+                    {/* <h2>
                         Le cinema depuis votre canapé, pour toute la famille
-                    </h2>
+                    </h2> */}
                 </div>
-                <div className={style.section3}>
+                {/* <div className={style.section3}>
                     <h2>Revoir ...</h2>
                 </div> */}
             </div>

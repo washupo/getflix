@@ -47,8 +47,8 @@
 }
 
 .section2 img {
-    width: 50%;
-    margin-left: -100px;
+    width: 100%;
+    /* margin-left: -100px; */
     object-fit: cover;
 }
 
